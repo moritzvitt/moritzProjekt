@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #drop-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            cursor: pointer;
+        }
+
+        #file-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Flashcard Generator</h1>
+
+<div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+    <p>Drag and drop JSON and CSV files here or click to select.</p>
+    <input type="file" id="file-input" multiple onchange="handleFiles(this.files);">
+</div>
+
+<script>
+    function dragOverHandler(event) {
+        event.preventDefault();
+        document.getElementById('drop-area').style.border = '2px dashed #000';
+    }
+
+    function dropHandler(event) {
+        event.preventDefault();
+        document.getElementById('drop-area').style.border = '2px dashed #ccc';
+        var files = event.dataTransfer.files;
+        handleFiles(files);
+    }
+
+    function handleFiles(files) {
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            if (file.type === 'application/json') {
+                console.log('Selected JSON file:', file.name);
+                // Handle JSON file here (you can send it to the server or process it using JavaScript)
+            } else if (file.type === 'text/csv') {
+                console.log('Selected CSV file:', file.name);
+                // Handle CSV file here (you can send it to the server or process it using JavaScript)
+            } else {
+                console.log('Unsupported file type:', file.type);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
