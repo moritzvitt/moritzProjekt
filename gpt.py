@@ -1,7 +1,10 @@
 import pandas as pd
-import openai
+from openai import OpenAI
 from jinja2 import Template
 import time
+
+client = OpenAI()
+
 
 def create_df_messages(df, config_json):
 
@@ -39,14 +42,11 @@ def generate_content(message, retry_limit=3, timeout=15):
                 if time.time() - start_time > timeout:
                     raise TimeoutError("Timeout exceeded.")
                 
-                response = openai.ChatCompletion.create(
-                    model="gpt-4",
-                    messages=[{"role": "user", "content": message}],
-                    max_tokens=500,
-                    # temperature=0.5
-                )
+                response = client.chat.completions.create(model="gpt-4",
+                messages=[{"role": "user", "content": message}],
+                max_tokens=500)
                 
-                content = response.choices[0].message["content"]
+                content = response.choices[0].message.content
                 print(content)
                 return content
 

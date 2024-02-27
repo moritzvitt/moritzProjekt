@@ -4,12 +4,12 @@
     "anki_note_type": "LLN_German",
     "wanted_fields": {
       "synonyms": true,
-      "explanation": true,
-      "first_example": true,
+      "explanation": false,
+      "first_example": false,
       "second_example": false,
       "hint": false,
       "definition": false,
-      "grammar": true,
+      "grammar": false,
       "conjugation": false,
       "long_test_message": false
     },

@@ -2,10 +2,10 @@
 
 from sudachipy import tokenizer
 from sudachipy import dictionary
-from wanakana import to_hiragana, is_hiragana, is_japanese, is_katakana
+from wanakana import is_japanese, is_katakana, to_hiragana, is_hiragana
 import string
 
-tokenizer_obj = dictionary.Dictionary(dict_type="small").create()
+tokenizer_obj = dictionary.Dictionary(dict="small").create()
 
 KANJI_READING_MAPPING = {
     '私': '私[わたし]',

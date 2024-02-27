@@ -1,45 +1,22 @@
-# %% [markdown]
-# # Next TODO: 
-# 
-# I need a working deck, that I can learn with <b>as fast as possible!</b>
-# 
-# - <span style="color:lightgreen">Anki card styling!</span> Like 'the NewYorker' or 'Economist'! Black fonts, different sizes, like a newspaper! With thin lines between definition, hint, notes...
-# - add <span style="color:lightgreen">『』, "" </span> to long_sentence for better styling
-# - load <span style="color:lightgreen">"native_langage"</span> as a column and have a native_message for everything!  
-# - <span style="color:lightgreen">ふりがな</span> with a python library, not in Anki. Apparently 'Sudachi' is very reliable... Mecab. (kodachi) Have <span style="color:lightgreen">furigana</span> in separate code!
-# - maybe include a japanese dictionary like https://pypi.org/project/jamdict/ to improve the definitions. Which dictionaries should I rely on? API, downloaded html dictionary or something else? What does Lisardo say?
-# 
-# ## Wish list: 
-# - more synonyms, always also in target_language
-# - related phrases, common phrases....
-# - create a gpt assistant that gives better definitions
-# - more Kanji information
-# Different information depending on word_type:
-#     + nouns: related words, びょういん and 病気　etc,
-#     + verbs: conjugation, て-Form! (to know if る or う), prepositions for the verbs...
-#     + adjectives: な or い, conjugation examples
-# 
-
-# %%
 import os
 import pandas as pd
 import json
 from dotenv import load_dotenv
 import openai
-import os
 import pandas as pd
+import numpy as np
+from pathlib import Path
 
 # Import functions from other scripts 
 from formatting import general_formatting, definition_field, notes_field
 from furigana import add_furigana
 from deck import generate_anki_deck
 from gpt import create_df_messages, generate_content
-import numpy as np
 
-# chatGpt configuration
-load_dotenv()
-openai.api_key = os.getenv("22API_KEY")
-ai_model = os.getenv("model")
+# Load the environment variables
+api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = api_key
+print(api_key)
 
 def main(df, config_json):
 
@@ -49,23 +26,26 @@ def main(df, config_json):
     df_messages = create_df_messages(df, config_json)
     # print(df_messages)
 
-    error_count = 0  # Correctly initialized at the beginning
+    error_count = 0
+    rows_to_delete = []  # List to store the indices of rows to be deleted
+
     for idx, row in df_messages.iterrows():
-        if error_count >= 3:
-            break  # Check at the beginning of the outer loop to avoid unnecessary iterations
         for column in df_messages.columns:
             try:
-                df_messages.at[idx, column] = generate_content(row[column])
+                df.at[idx, column] = generate_content(row[column])
+                error_count = 0  # Reset error count on success
             except Exception as e:
                 error_count += 1
                 if error_count >= 3:
-                    break  # Only breaks the inner loop, but already checked condition in the outer loop
+                    rows_to_delete.append(idx)  # Add the index of the current row to the list
+                    break  # Exit the inner loop to move to the next row
 
-    # if error_count < 3:
-    #     # Continue with the rest of the code only if fewer than 3 errors occurred
-    #     general_formatting(df_messages, config_json)
-    #     # Rest of the code that depends on successful completion...
-
+    if error_count < 3:  # Check for overall success after the loop
+        # Delete the rows from the DataFrame
+        df = df.drop(rows_to_delete)
+        general_formatting(df_messages, config_json)
+    
+    
 
     
     # Apply formatting functions, general formatting: adding fields (so that the df is processed correctly), cloze pattern, hint, id, mp3, image
@@ -99,8 +79,8 @@ def main(df, config_json):
 
 if __name__ == "__main__":
 
-    json_file_path = '/Users/moritzvitt/coding/config/ger_config.json'
-    csv_file_path = '/Users/moritzvitt/downloads/ger_example/items.csv'
+    json_file_path = '/Users/moritzvitt/LR2Anki/config/ger_config.json'
+    csv_file_path = '/Users/moritzvitt/LR2Anki/test_dataframes/ger_items.csv'
 
     # Open the JSON file and load its contents into a Python dictionary
     with open(json_file_path, 'r') as json_file:
@@ -108,7 +88,7 @@ if __name__ == "__main__":
     
     column_names = config_json['column_names']
     df = pd.read_csv(csv_file_path, delimiter='\t', names=column_names)
-
+    print(column_names)
     # native_language column
     df['native_language'] = config_json['native_language']
 
