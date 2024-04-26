@@ -14,7 +14,7 @@ def generate_anki_deck(df):
 
     # df = df_anki[["ID", "cloze", "hint", "definition", "notes", "image", "audio"]]
     # so no problem later with the anki package, to string
-    # df = df.astype(str)
+    df = df.astype(str)
 
     # Define the Anki model
     model_id = 1607392319

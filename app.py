@@ -8,7 +8,7 @@ app.secret_key = 'your_secret_key_here'
 
 
 # Set the folder to save uploaded files
-UPLOAD_FOLDER = '/Users/moritzvitt/coding/uploads'
+UPLOAD_FOLDER = '/Users/moritzvitt/LR2Anki/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/', methods=['GET'])
@@ -29,7 +29,7 @@ def upload_file():
         file.save(filepath)
         native_language = request.form['nativeLanguage']
         
-        json_file_path = '/Users/moritzvitt/coding/config/ger_config.json'
+        json_file_path = '/Users/moritzvitt/LR2Anki/config/ger_config.json'
 
         # Open the JSON file and load its contents into a Python dictionary
         with open(json_file_path, 'r') as json_file:

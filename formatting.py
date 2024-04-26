@@ -11,6 +11,7 @@ def general_formatting(df, config_json):
                 df[field_name] = ""
     add_fields(df, config_json["wanted_fields"])
 
+    
     def clean_long_sentence(sentence):
         if "(" in sentence and ")" in sentence:
             cleaned_sentence = re.sub(r'\(.*?\)', '', sentence)
@@ -27,6 +28,7 @@ def general_formatting(df, config_json):
         #random number
         newID = newID + "__" + str(random.randint(1000, 9999))
         return newID
+    
     df["ID"] = df.apply(lambda row: createID(row["ID"], row["source"], row["date"]), axis=1)
 
     def mp3_pattern(mp3):
@@ -41,10 +43,10 @@ def general_formatting(df, config_json):
 
     def clozePattern(word, phrase, synonyms):
         word_new = '{' + '{' f'c1::{word}::{synonyms}' + '}' + '}'
-        print(word_new)
+        # print(word_new)
 
         phrase = re.sub(f'{word}', word_new, phrase, flags=re.IGNORECASE)
-        print(phrase)
+        # print(phrase)
         return phrase
     df["cloze"] = df.apply(lambda row: clozePattern(row["word"], row["long_phrase"], row["synonyms"]), axis=1)
 

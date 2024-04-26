@@ -1,0 +1,60 @@
+.card {
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.nightMode .card {
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    background-color: black;
+}
+
+.cloze {
+    font-size: 26px;
+    font-weight: italic;
+    color:rgb(100, 70, 250);
+}
+
+.nightMode .cloze {
+    font-size: 26px;
+    font-weight: italic;
+    color: rgb(234, 166, 11);
+}
+
+.L1 {
+   	color: black;
+    border: 2px;
+    font-size: 13;
+   	font-weight: italic;
+}
+
+.nightMode .L1 {
+   	color: white;
+    border: 2px;
+    text-align: left;
+    font-size: 20px;
+   	font-weight: italic;
+}
+    		
+.frame {
+    border: 2px solid black; /* Change the color and thickness as needed */
+    padding: 10px; /* Adjust padding as needed */
+    display: inline-block; /* Ensures the frame only takes up as much space as its content */
+}
+
+.nightMode .frame {
+    border: 2px solid white; /* Change the color and thickness as needed */
+    padding: 10px; /* Adjust padding as needed */
+    display: inline-block; /* Ensures the frame only takes up as much space as its content */
+}
+
+.frame {
+    border: 2px solid black; /* Change the color and 		    thickness as needed */
+    padding: 10px; /* Adjust padding as needed */
+    display: inline-block; /* Ensures the frame only    takes up as much space as its content */
+    max-width: 100%;
+
+}

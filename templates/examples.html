@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <style>
+        /* CSS_SECTION */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        }
+
+        .card {
+            font-family: arial;
+            font-size: 20px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .nightMode .card {
+            font-family: arial;
+            font-size: 20px;
+            text-align: center;
+            background-color: black;
+        }
+
+        .cloze {
+            font-size: 26px;
+            font-weight: italic;
+            color:rgb(100, 70, 250);
+        }
+
+        .nightMode .cloze {
+            font-size: 26px;
+            font-weight: italic;
+            color: rgb(234, 166, 11);
+        }
+
+        .L1 {
+            color: black;
+            border: 2px;
+            font-size: 13;
+            font-weight: italic;
+        }
+
+        .nightMode .L1 {
+            color: white;
+            border: 2px;
+            text-align: left;
+            font-size: 20px;
+            font-weight: italic;
+        }
+
+        .frame {
+            border: 2px solid black; /* Change the color and thickness as needed */
+            padding: 10px; /* Adjust padding as needed */
+            display: inline-block; /* Ensures the frame only takes up as much space as its content */
+        }
+
+        .nightMode .frame {
+            border: 2px solid white; /* Change the color and thickness as needed */
+            padding: 10px; /* Adjust padding as needed */
+            display: inline-block; /* Ensures the frame only takes up as much space as its content */
+        }
+
+        .frame {
+            border: 2px solid black; /* Change the color and thickness as needed */
+            padding: 10px; /* Adjust padding as needed */
+            display: inline-block; /* Ensures the frame only takes up as much space as its content */
+            /* make the width of the card normal on mobile */
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div style="font-size: 23px; text-align: center;">
+        「バカなおしゃべりは やめとくれ そんな<span class="cloze">ヒョロヒョロ</span>に 何[なに]ができるのさ ここはね 人間[にんげん]の 来[く]る 所[ところ]じゃないんだ」
+    </div>
+    <br>
+    <div class="hint" style="text-align: center;">
+        : thin, weak physically.
+    </div>         
+    <br>
+    <div class="frame">
+        <div class="L1" style="text-align: left;">
+            ヒョロヒョロ: 細[ほそ]くて 弱々[よわよわ]しい 様子[ようす]。「そんな 細[ほそ] 弱[じゃく]な 人[ひと]に 何[なに]ができるのか？」の 意味[いみ]。
+            <br>そのヒョロヒョロした 男[おとこ]の 子[こ]が、 今[いま]では 筋肉[きんにく]ムキムキのアスリートになった。 
+            The skinny boy has now become a muscular athlete.
+            <br>彼[かれ]は 運動[うんどう] 不足[ふそく]でヒョロヒョロの 体[からだ]になってしまった。 
+            He became skinny due to lack of exercise.
+            <br>
+            <br>そんな: Such, that kind of
+            <br>ヒョロヒョロに: Wimpy, weakly (ヒョロヒョロ = onomatopoeia for being weak/thin, に = adverbial particle)
+            <br>何[なに]が: What ( 何[なに] = what, が = subject marker)
+            <br>できる: Can do (potential form of する)
+            <br>の: Question marker, explanatory
+            <br>さ: Emphatic particle
+
+        </div>
+        <br>
+        <div class="L1" style="text-align: left;">
+            <hr>
+            Stop babbling. You're just a useless weakling. Besides, this is no place for humans.
+
+            Hyoro Hyoro, skinny, thin
+
+        </div>
+    </div>
+
+    <br>
+    <br>
+    
+    <img src="static/francy.webp" width="200" height="200" class="center">
+
+    <br>
+    <audio controls>
+        <source src="{{audio}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+
+    </audio>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <button type="button" class="btn btn-outline-primary btn-lg" onclick="document.getElementById('myAudio').play()">
+        <i class="fas fa-play fa-2x"></i>
+    </button>
+
+    <audio id="myAudio">
+        <i class="bi bi-bug"></i>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bug" viewBox="0 0 16 16">
+            <path d="M4.355.522a.5.5 0 0 1 .623.333l.291.956A5 5 0 0 1 8 1c1.007 0 1.946.298 2.731.811l.29-.956a.5.5 0 1 1 .957.29l-.41 1.352A5 5 0 0 1 13 6h.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 1 1 0v.5A1.5 1.5 0 0 1 13.5 7H13v1h1.5a.5.5 0 0 1 0 1H13v1h.5a1.5 1.5 0 0 1 1.5 1.5v.5a.5.5 0 1 1-1 0v-.5a.5.5 0 0 0-.5-.5H13a5 5 0 0 1-10 0h-.5a.5.5 0 0 0-.5.5v.5a.5.5 0 1 1-1 0v-.5A1.5 1.5 0 0 1 2.5 10H3V9H1.5a.5.5 0 0 1 0-1H3V7h-.5A1.5 1.5 0 0 1 1 5.5V5a.5.5 0 0 1 1 0v.5a.5.5 0 0 0 .5.5H3c0-1.364.547-2.601 1.432-3.503l-.41-1.352a.5.5 0 0 1 .333-.623M4 7v4a4 4 0 0 0 3.5 3.97V7zm4.5 0v7.97A4 4 0 0 0 12 11V7zM12 6a4 4 0 0 0-1.334-2.982A3.98 3.98 0 0 0 8 2a3.98 3.98 0 0 0-2.667 1.018A4 4 0 0 0 4 6z"/>
+          </svg>
+        <source src="{{audio}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+</body>
+</html>
