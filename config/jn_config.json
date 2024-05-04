@@ -4,11 +4,11 @@
     "anki_note_type": "LLN_japanese",
     "wanted_fields": {
       "synonyms": true,
-      "explanation": true,
-      "first_example": true,
-      "second_example": true,
-      "hint": true,
-      "definition": true,
+      "explanation": false,
+      "first_example": false,
+      "second_example": false,
+      "hint": false,
+      "definition": false,
       "grammar": true,
       "conjugation": false,
       "long_test_message": false

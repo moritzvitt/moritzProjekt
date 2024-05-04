@@ -22,35 +22,35 @@ def general_formatting(df, config_json):
     df["long_phrase"] = df["long_phrase"].apply(clean_long_sentence)
 
 
-    def createID(ID, source, date):
+    def create_ID(ID, source, date):
         newID = f"{ID}{source}{date}"
         newID = newID.replace(" ", "__")
         #random number
         newID = newID + "__" + str(random.randint(1000, 9999))
         return newID
     
-    df["ID"] = df.apply(lambda row: createID(row["ID"], row["source"], row["date"]), axis=1)
+    df["ID"] = df.apply(lambda row: create_ID(row["ID"], row["source"], row["date"]), axis=1)
 
-    def mp3_pattern(mp3):
+    def anki_sound_pattern(mp3):
             mp3 = "[sound:" + mp3 + "]"
             return mp3
-    df["audio"] = df.apply(lambda row: mp3_pattern(row["audio"]), axis=1)
+    df["audio"] = df.apply(lambda row: anki_sound_pattern(row["audio"]), axis=1)
 
-    def image(first_jpg, second_jpg):
+    def anki_image_pattern(first_jpg, second_jpg):
         image = f'<img src="{first_jpg}"><img src="{second_jpg}">'
         return image
-    df["image"] = df.apply(lambda row: image(row["first_jpg"], row["second_jpg"]), axis=1)
+    df["image"] = df.apply(lambda row: anki_image_pattern(row["first_jpg"], row["second_jpg"]), axis=1)
 
-    def clozePattern(word, phrase, synonyms):
+    def cloze_pattern(word, phrase, synonyms):
         word_new = '{' + '{' f'c1::{word}::{synonyms}' + '}' + '}'
         # print(word_new)
 
         phrase = re.sub(f'{word}', word_new, phrase, flags=re.IGNORECASE)
         # print(phrase)
         return phrase
-    df["cloze"] = df.apply(lambda row: clozePattern(row["word"], row["long_phrase"], row["synonyms"]), axis=1)
+    df["cloze"] = df.apply(lambda row: cloze_pattern(row["word"], row["long_phrase"], row["synonyms"]), axis=1)
 
-    def cleanHint(hint):
+    def clean_hint(hint):
         # print(type(hint))
         if hint != "" and ":" in hint:
             parts = re.findall(r"[:](.+)?", hint) 
@@ -58,7 +58,7 @@ def general_formatting(df, config_json):
             return f": {parts[0]}"
         else: 
             return ""
-    df["hint"] = df["hint"].apply(cleanHint)
+    df["hint"] = df["hint"].apply(clean_hint)
 
 
 def definition_field(definition, explanation, grammar, conjugation, first_example, second_example):

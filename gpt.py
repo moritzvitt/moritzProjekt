@@ -46,7 +46,7 @@ def generate_content(message):
         response = client.chat.completions.create(
             messages=[{"role": "user", "content": message}],
             max_tokens=500,
-            model="gpt-4"
+            model="gpt-3.5-turbo",
         )
         
         content = response.choices[0].message.content

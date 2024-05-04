@@ -89,17 +89,17 @@ def main(df, config_json):
 
 if __name__ == "__main__":
 
-    # json_file_path = '/Users/moritzvitt/src/LR2Anki/config/ger_config.json'
-    # csv_file_path = '/Users/moritzvitt/src/LR2Anki/test_dataframes/ger_items.csv'
-    json_file_path = '/Users/moritzvitt/src/LR2Anki/config/jn_config.json'
-    csv_file_path = '/Users/moritzvitt/src/LR2Anki/test_dataframes/onizuka2.csv'
+    json_file_path = '/Users/moritzvitt/src/LR2Anki/config/ger_config.json'
+    csv_file_path = '/Users/moritzvitt/src/LR2Anki/test_dataframes/ger_items.csv'
+    # json_file_path = '/Users/moritzvitt/src/LR2Anki/config/jn_config.json'
+    # csv_file_path = '/Users/moritzvitt/src/LR2Anki/test_dataframes/items.csv'
 
     # Open the JSON file and load its contents into a Python dictionary
     with open(json_file_path, 'r') as json_file:
         config_json = json.load(json_file)
     
     column_names = config_json['column_names']
-    df = pd.read_csv(csv_file_path, delimiter=';', names=column_names)
+    df = pd.read_csv(csv_file_path, delimiter='\t', names=column_names)
     print(column_names)
     # native_language column
     df['native_language'] = config_json['native_language']

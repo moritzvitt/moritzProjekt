@@ -1,0 +1,44 @@
+# This file contains the messages that are sent to the user during the different stages of the conversation.
+synonyms: 
+  "Provide me with a translation for {{word}} in {{native_language}}. 
+  You can also take into account the context of '{{word}}' in '{{short_phrase}}'. 
+  Only provide the translation, nothing else! For example a translation for 'Baum': tree."
+test: 
+  "Say 'test'"
+first_example: 
+  "Give me one more example in {{native_language}} for the usage of {{word}}. 
+  Only provide the example, nothing else! Also provide the translation in {{native_language}}."
+second_example: 
+  "Give me one more example in {{native_language}} for the usage of {{word}}. 
+  Only provide the example, nothing else! Also provide the translation in {{native_language}}."
+explanation: 
+  "Please answer in {{native_language}}. 
+  Provide me with a brief explanation of '{{stem}}'! 
+  You can also take in account the context of '{{word}}' in '{{short_phrase}}'. 
+  Be very concise, use a maximum of 15 words! 
+  Return the explanation in the form '{{word}}: explanation.'."
+hint: 
+  "Provide me with a brief explanation of '{{word}}' in {{native_language}}. 
+  You can also take in account the context of '{{word}}' in '{{short_phrase}}'. 
+  Be very concise, use a maximum of 7 words! 
+  Return the explanation in the form '{word}: explanation.'. 
+  Don't repeat '{{word}}' in the explanation!"
+definition: 
+  "Provide me with a brief definition of '{{stem}}'. 
+  You can also take into account the context of '{{word}}' in '{{short_phrase}}'. 
+  Be very concise, use a maximum of 15 words! 
+  Return the explanation in the form '{word}: explanation'."
+grammar: 
+  "First off: be EXTREMELY concise! Always provide the answer in {{native_language}}.
+  Don't answer in whole sentences, only provide short notes! 
+  Provide me with a brief explanation of the different grammatical elements in '{{short_phrase}}'. 
+  Put <br> tags after every note."
+conjugation: 
+  "First off: be EXTREMELY concise! Always provide the answer in {{native_language}}. 
+  Don't answer in whole sentences, only provide short notes! 
+  Provide me with a brief explanation of the different grammatical elements in '{{short_phrase}}'. 
+  Put <br> tags after every note."
+long_test_message: 
+  "Write a story that takes you 20 seconds to write! 
+  I am testing something here with the chatGPT API call timeout. 
+  You need to write a long story for me, so that the API call lasts at least 15 seconds."
