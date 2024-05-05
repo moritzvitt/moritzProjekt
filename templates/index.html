@@ -5,34 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Script Interface</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 20px;
-        }
-        .header {
-            margin-bottom: 40px;
-        }
-        .logo {
-            height: 200px; /* Adjust based on your logo's size */
-        }
-        .card {
-            border: 0;
-            box-shadow: 0 4px 8px rgba(0,0,0,.1);
-        }
-        /* CSS animation for new table rows */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .fade-in {
-            animation: fadeIn 2s;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <title>{{ title }}</title>
     <div class="container">
         <div class="header text-center mb-4">
-            <img src="{{ url_for('static', filename='francy.webp') }}" alt="Logo" class="logo">
             <h1>Welcome to Our Service</h1>
             <p class="lead">Upload your file with ease and convenience.</p>
         </div>
@@ -43,12 +21,16 @@
                         <h2 class="card-title">Upload Your File</h2>
                         <form action="/upload" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="nativeLanguageSelect">Select Your Native Language</label>
-                                <select class="form-control" id="nativeLanguageSelect" name="nativeLanguage">
-                                    <option value="English">English</option>
-                                    <!-- Additional language options -->
-                                </select>
+                                <label for="languageSelect">Select Your Native Language</label>
+                                <select id="languageSelect" class="form-control"></select>
+                                <label for="wantedFieldsSelect">Select Wanted Fields:</label>
+                                <select id="wantedFieldsSelect" class="form-control" multiple></select>
+                                <label>Select Wanted Fields:</label>
+                            <div id="wantedFieldsCheckboxes">
+                            <!-- JavaScript will populate checkboxes here -->
                             </div>
+
+                            </div>                           
                             <div class="form-group">
                                 <label for="fileUpload">File input</label>
                                 <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required>
@@ -59,57 +41,13 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Output</h2>
-                        <div id="output">
-                            {% if df_html %}
-                                {{ df_html|safe }}
-                            {% else %}
-                                <p>No data available.</p>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-5">
-            <h2>Dynamic Value Display</h2>
-            <table id="valuesTable" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>New Values</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- JavaScript will insert new rows here -->
-                </tbody>
-            </table>
-        </div>
     </div>
-
-    <script>
-        function fetchNewValues() {
-            fetch('/get-latest-values')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.querySelector('#valuesTable tbody');
-                    data.forEach(value => {
-                        const newRow = tableBody.insertRow();
-                        const newCell = newRow.insertCell();
-                        newCell.textContent = value;
-                        newRow.classList.add('fade-in');
-                    });
-                })
-                .catch(error => console.error('Error fetching new values:', error));
-        }
-
-        setInterval(fetchNewValues, 5000);
-    </script>
+    
+    <!-- JavaScript dependencies (Bootstrap and jQuery) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for language selection and wanted_fields selection -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

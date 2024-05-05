@@ -2,8 +2,9 @@ import pandas as pd
 from jinja2 import Template
 from openai import OpenAI
 import openai
+import os
 
-def create_ai_prompts(df, merged, config_yaml):
+def create_ai_prompts(df, merged, config):
 
     prompts_df = pd.DataFrame()
 
@@ -25,7 +26,7 @@ def create_ai_prompts(df, merged, config_yaml):
         return df
 
     # apply filter field to the df_messages and return the df_messages
-    prompts_df = filter_fields(prompts_df, config_yaml["wanted_fields"])
+    prompts_df = filter_fields(prompts_df, config["wanted_fields"])
     print("Filtered fields based on config.json")
     
     return prompts_df
@@ -38,6 +39,7 @@ client = OpenAI(
     max_retries=0,
     timeout=30, # 10 seconds
 )
+
 
 def get_ai_response(message):
     try:
@@ -61,6 +63,10 @@ def get_ai_response(message):
     return content
 
 def handle_API_errors(func, df, prompts):  
+
+    api_key = os.environ.get("OPENAI_API_KEY")
+    print("\nFetchted API KEY SUCCESFULLY:  " + api_key + "\n")
+
     error_count = 0
     rows_to_delete = []  # List to store the indices of rows to be deleted
 

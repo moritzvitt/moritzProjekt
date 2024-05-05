@@ -9,7 +9,6 @@ def basic_configurations(config_yaml_path, csv_file_path):
         native_language = config_yaml["native_language"]
         target_language = config_yaml["target_language"]
         column_names = config_yaml['column_names']
-        wanted_fields = config_yaml['wanted_fields']
 
     # Load the csv file
     df = pd.read_csv(csv_file_path, delimiter='\t', names=column_names)

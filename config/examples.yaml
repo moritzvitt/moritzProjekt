@@ -31,9 +31,9 @@ German:
     - keine: 'no' 
     - negation article, accusative case, plural 
     (because 'Äpfel' is plural and accusative reflects the direct object being negated). 
-    - Äpfel: 'apples’, der Apfel, die Äpfel, accusative"
+    - Äpfel: 'apples’, der Apfel, die Äpfel, accusative"  
 Japanese: 
-  synonyms: "For example a synonym for 'Baum': große Pflanze."
+  synonyms: "For example a synonym for '家': home, house."
   first_example: >
     "Like: '私はりんごを食べるのが好きです。<br>
     I like to eat apples.' Don't provide romaji or other transliterations!",
@@ -75,3 +75,57 @@ Japanese:
     働はたらかなきゃな: Have to work (働く + ない + なければ + な, contraction of なければならない)<br> 
     こいつらの: Their (こいつら = these, の = possessive particle)<br> 
     魔法まほうは: Magic (魔法 = magic, は = topic marker)<br> 消きえちまうんだ: Will disappear (消える + ちまう + んだ, ちまう = contraction of てしまう, んだ = explanatory particle)<br>",
+French: 
+  synonyms: "For example a translation for 'arbre': tree."
+  first_example: "Like: 'J'aime manger des fruits。<br>I like to eat fruits.' "
+  second_example: "Like 'J'aime pas ce mec<br>I don't like this guy'"
+  explanation: "For example 'maison: ein Ort an dem Menschen leben.'"
+  hint: "For example 'essen: to eat'."
+  definition: "For example: 'Haus: ein Ort an dem Menschen leben.'"
+  grammar: >
+    "For example for the sentence: 
+    'Le président vit dans une maison': 
+    - Le président: The president 
+    - vit: lives, 3rd person singular of the verb 'vivre' 
+    - dans: in 
+    - une maison: a house 
+    / 2nd example: 'J'aime pas ce type de musique': 
+    - J'aime pas: Je n'aime pas [Je ne aime pas] = I don't like 
+    - type de musique: type of music"
+  conjugation: >
+    "For example for the sentence: 
+    'Le président vit dans une maison': 
+    - Le président: The president 
+    - vit: 3. ps. vivre = to live (vis, vis, vit, vivons, vivez, vivent)
+    - dans: in 
+    - une maison: a house 
+    / 2nd example: 'J'aime pas ce type de musique': 
+    - J'aime pas: Je n'aime pas [Je ne aime pas] = I don't like, aimer: to like (aime, aimes, aime, aimons, aimez, aiment) 
+    - type de musique: type of music"
+Italian:
+  synonyms: "For example a translation for 'albero': tree."
+  first_example: "Like: 'Mi piace mangiare la frutta.<br>I like to eat fruit.' "
+  second_example: "Like 'Non mi piace questo ragazzo'<br>I don't like this guy'"
+  explanation: "For example 'casa: un luogo dove vivono le persone.'"
+  hint: "For example 'mangiare: to eat'."
+  definition: "For example: 'casa: un luogo dove vivono le persone.'"
+  grammar: >
+    "For example for the sentence: 
+    'Il presidente vive in una casa': 
+    - Il presidente: The president 
+    - vive: 3. ps. 'vivere': to live (vivo, vivi, vive, viviamo, vivete, vivono) 
+    - in: in 
+    - una casa: a house 
+    / 2nd example: 'Non mi piace questo genere di musica': 
+    - Non mi piace: I don't like (mi piace, ti piace, gli/le piace, ci piace, vi piace, gli/le piace) 
+    - questo genere di musica: this genre of music"
+  conjugation: >
+    "For example for the sentence: 
+    'Il presidente vive in una casa': 
+    - Il presidente: The president 
+    - vive: 3. ps. 'vivere': to live (vivo, vivi, vive, viviamo, vivete, vivono) 
+    - in: in 
+    - una casa: a house 
+    / 2nd example: 'Non mi piace questo genere di musica': 
+    - Non mi piace: I don't like (mi piace, ti piace, gli/le piace, ci piace, vi piace, gli/le piace) 
+    - questo genere di musica: this genre of music"

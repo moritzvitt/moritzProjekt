@@ -2,14 +2,14 @@ import pandas as pd
 import re
 import random
 
-def formatting(df, config_json):
+def formatting(df, config):
 
     def add_fields(df, wanted_fields):
         for field, should_add in wanted_fields.items():
             if not should_add:
                 field_name = f"{field}"
                 df[field_name] = ""
-    add_fields(df, config_json["wanted_fields"])
+    add_fields(df, config["wanted_fields"])
 
     
     def clean_long_sentence(sentence):
