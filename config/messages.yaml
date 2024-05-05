@@ -2,7 +2,7 @@
 synonyms: 
   "Provide me with a translation for {{word}} in {{native_language}}. 
   You can also take into account the context of '{{word}}' in '{{short_phrase}}'. 
-  Only provide the translation, nothing else! For example a translation for 'Baum': tree."
+  Only provide the translation, nothing else!"
 test: 
   "Say 'test'"
 first_example: 

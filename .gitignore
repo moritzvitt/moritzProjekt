@@ -2,5 +2,7 @@
 .venv
 venv/
 venv
-test_dataframes
+test_dataframes/
+__pycache__/
+uploads/
 other

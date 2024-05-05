@@ -2,7 +2,7 @@ import pandas as pd
 import re
 import random
 
-def general_formatting(df, config_json):
+def formatting(df, config_json):
 
     def add_fields(df, wanted_fields):
         for field, should_add in wanted_fields.items():
@@ -31,15 +31,18 @@ def general_formatting(df, config_json):
     
     df["ID"] = df.apply(lambda row: create_ID(row["ID"], row["source"], row["date"]), axis=1)
 
+
     def anki_sound_pattern(mp3):
             mp3 = "[sound:" + mp3 + "]"
             return mp3
     df["audio"] = df.apply(lambda row: anki_sound_pattern(row["audio"]), axis=1)
 
+
     def anki_image_pattern(first_jpg, second_jpg):
         image = f'<img src="{first_jpg}"><img src="{second_jpg}">'
         return image
     df["image"] = df.apply(lambda row: anki_image_pattern(row["first_jpg"], row["second_jpg"]), axis=1)
+
 
     def cloze_pattern(word, phrase, synonyms):
         word_new = '{' + '{' f'c1::{word}::{synonyms}' + '}' + '}'
@@ -49,6 +52,7 @@ def general_formatting(df, config_json):
         # print(phrase)
         return phrase
     df["cloze"] = df.apply(lambda row: cloze_pattern(row["word"], row["long_phrase"], row["synonyms"]), axis=1)
+
 
     def clean_hint(hint):
         # print(type(hint))
@@ -61,18 +65,19 @@ def general_formatting(df, config_json):
     df["hint"] = df["hint"].apply(clean_hint)
 
 
-def definition_field(definition, explanation, grammar, conjugation, first_example, second_example):
-    fields = [field for field in [definition, explanation, grammar, conjugation, first_example, second_example] if field]
-    newDefinition = "<br>".join(map(str, fields))
-    return newDefinition
-# df["definition"] = df.apply(lambda row: definition_field(row["definition"], row["explanation"], row["grammar"], row["conjugation"], row["first_example"], row["second_example"]), axis=1)
+    def definition_field(a, b, c, d, e, f):
+        fields = [field for field in [a, b, c, d, e, f] if field]
+        newDefinition = "<br>".join(map(str, fields))
+        return newDefinition
+    df["definition"] = df.apply(lambda row: definition_field(row["definition"], row["explanation"], row["grammar"], row["conjugation"], row["first_example"], row["second_example"]), axis=1)
 
-def notes_field(translation, word_translation):
-    translation_str = str(translation) if not pd.isnull(translation) else ""
-    word_translation_str = str(word_translation) if not pd.isnull(word_translation) else ""
-    newNotes = translation_str + "<br><br>" + word_translation_str + "<br>"
-    return newNotes
-# df["notes"] = df.apply(lambda row: notes_field(row["human_translation"], row["word_translation"]), axis=1)
+
+    def notes_field(translation, word_translation):
+        translation_str = str(translation) if not pd.isnull(translation) else ""
+        word_translation_str = str(word_translation) if not pd.isnull(word_translation) else ""
+        newNotes = translation_str + "<br><br>" + word_translation_str + "<br>"
+        return newNotes
+    df["notes"] = df.apply(lambda row: notes_field(row["human_translation"], row["word_translation"]), axis=1)
 
 
 

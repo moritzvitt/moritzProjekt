@@ -1,7 +1,10 @@
 import genanki 
+import numpy as np
+import os
+import time
 
 def generate_anki_deck(df):
-    with open('anki.html', 'r', encoding='utf-8') as content_file:
+    with open('templates/anki_card.html', 'r', encoding='utf-8') as content_file:
         content = content_file.read()   
 
     # Splitting HTML content
@@ -10,7 +13,10 @@ def generate_anki_deck(df):
     # Assigning sections to qfmt, afmt, and css
     qfmt_html = html_sections[1]
     afmt_html = html_sections[2]
-    css_code = html_sections[3]
+
+    with open('css/anki_card.css', 'r', encoding='utf-8') as content_file:
+        css_code = content_file.read() 
+    
 
     # df = df_anki[["ID", "cloze", "hint", "definition", "notes", "image", "audio"]]
     # so no problem later with the anki package, to string
@@ -58,22 +64,34 @@ def generate_anki_deck(df):
     return apkg_package
 
 
+# export the df as an anki package and csv file
+
+def export_df (df, config_yaml, package):
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
+    package_path = os.path.join(desktop_path, f'{config_yaml["target_language"]}2{config_yaml["native_language"]}_LLN_{current_time}.apkg')
+    package.write_to_file(package_path)
+
+    print(f'Anki package "{package_path}" has been created.')
+
+    # only keep the created fields, that should be displayed on the index.html
+    # df = df[["synonyms", "hint", "first_example", "second_example", "explanation", "cloze", "definition", "image", "audio"]]
+    df = df[["synonyms", "hint", "first_example", "second_example", "explanation", "cloze", "definition", "image", "audio"]]
+    # Replace empty strings with NaN
+    df = df.replace('', np.nan)
+    # Drop columns that only contain NaN
+    df = df.dropna(how='all', axis=1)
+    # Save the DataFrame as a CSV file
+    csv_file_path = os.path.join(desktop_path, f'{config_yaml["target_language"]}2{config_yaml["native_language"]}_LLN_{current_time}.csv')
+    df.to_csv(csv_file_path, index=False, sep='\t')
+    print(f'CSV file "{csv_file_path}" has been created.')
+
+    return df
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 
