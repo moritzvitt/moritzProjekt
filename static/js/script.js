@@ -3,6 +3,13 @@ var languages = [
     { code: "en", name: "English" },
     { code: "fr", name: "French" },
     { code: "es", name: "Spanish" },
+    { code: "de", name: "German" },
+    { code: "it", name: "Italian" },
+    { code: "pt", name: "Portuguese" },
+    { code: "nl", name: "Dutch" },
+    { code: "pl", name: "Polish" },
+
+
     // Add more languages as needed
 ];
 
@@ -15,31 +22,6 @@ languages.forEach(function(language) {
     option.textContent = language.name;
     selectLanguage.appendChild(option);
 });
-
-// // Array of wanted fields and their corresponding names
-// var wantedFields = [
-//     "synonyms",
-//     "test",
-//     "first example",
-//     "second example",
-//     "explanation",
-//     "hint",
-//     "definition",
-//     "grammar",
-//     "conjugation",
-//     "long_test_message"
-// ];
-
-// var selectWantedFields = document.getElementById("wantedFieldsSelect");
-
-// // Loop through the wantedFields array and create options for field selection
-// wantedFields.forEach(function(field) {
-//     var option = document.createElement("option");
-//     option.value = field;
-//     option.textContent = field;
-//     selectWantedFields.appendChild(option);
-// });
-
 
 // Array of wanted fields
 var wantedFields = [
@@ -56,7 +38,7 @@ var wantedFields = [
   ];
   
   var checkboxesContainer = document.getElementById("wantedFieldsCheckboxes");
-  
+    
   // Loop through the wantedFields array and create checkboxes
   wantedFields.forEach(function(field) {
     var checkbox = document.createElement("input");

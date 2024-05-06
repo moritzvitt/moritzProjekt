@@ -1,24 +1,4 @@
-# possible languages
-languages: 
-  - Japanese 
-  - English
-  - Spanish
-  - French
-  - German
-  - Italian
-  - Dutch
-  - Portuguese
-  - Russian
-  - Chinese
-  - Korean
-  - Arabic
-  - Turkish
-  - Hindi
-  - Bengali
-  - Urdu
-  - Vietnamese
-
-# settings
+# configuration for when running if __name__ == "__main__": in main.py
 
 target_language: Japanese
 native_language: English
@@ -35,7 +15,7 @@ wanted_fields:
   grammar: false
   conjugation: false
   long_test_message: false
-
+  
 column_names:
   - ID
   - word_or_phrase

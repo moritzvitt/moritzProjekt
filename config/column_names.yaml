@@ -1,0 +1,25 @@
+column_names:
+  - ID
+  - word_or_phrase
+  - short_phrase
+  - short_translation
+  - word
+  - stem
+  - word_type
+  - NAN
+  - word_translation
+  - website
+  - language
+  - translation_language
+  - romaji
+  - long_romaji
+  - time_stamp
+  - movie_code
+  - source
+  - date
+  - long_phrase
+  - machine_translation
+  - human_translation
+  - first_jpg
+  - second_jpg
+  - audio
