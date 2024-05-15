@@ -1,0 +1,27 @@
+
+{% block content %}
+
+
+<div class="table-responsive">
+    <table class="table table-primary table-bordered border-primary">  
+        <thead>
+            <tr>
+                {% for col in df.columns %}
+                    <th scope="col">{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in df.values %}
+                <tr>
+                    {% for val in row %}
+                        <td class="short-cell">{{ val }}</td>  <!-- Apply custom class -->
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

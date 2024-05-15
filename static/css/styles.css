@@ -1,24 +1,11 @@
-body {
-    padding-top: 20px;
+.table td, .table th {
+    height: 50px !important;
 }
-.header {
-    margin-bottom: 40px;
-}
-.logo {
-    height: 200px; /* Adjust based on your logo's size */
-}
-.card {
-    border: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
-}
-
-
-/* CSS animation for new table rows */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-.fade-in {
-    animation: fadeIn 2s;
+.short-cell {
+    height: 40px;
+    white-space: normal;  /* Allows text to wrap */
+    word-break: break-all;  /* Allows unbreakable words to be broken */
+    /* line-break: strict;  Adheres to strict line breaking rules for Japanese text */
+    overflow: hidden;  /* Hides overflowed text */
 }
 

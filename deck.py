@@ -66,12 +66,11 @@ def generate_anki_deck(df):
 
 # export the df as an anki package and csv file
 
-def export_df (df, config, package):
+def export_df (df, package, config, output_file_path):
 
     # Save the Anki package to the Desktop
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
-    package_path = os.path.join(desktop_path, f'{config["native_language"]}_LLN_{current_time}.apkg')
+    package_path = os.path.join(output_file_path, f'{config["native_language"]}_LLN_{current_time}.apkg')
     package.write_to_file(package_path)
 
     print(f'Anki package "{package_path}" has been created.')
@@ -85,12 +84,12 @@ def export_df (df, config, package):
     df = df.dropna(how='all', axis=1)
 
     # Save the DataFrame as a CSV file to the Desktop
-    csv_file_path = os.path.join(desktop_path, f'{config["native_language"]}_LLN_{current_time}.csv')
+    csv_file_path = os.path.join(output_file_path, f'{config["native_language"]}_LLN_{current_time}.csv')
     df.to_csv(csv_file_path, index=False, sep='\t')
 
     print(f'CSV file "{csv_file_path}" has been created.')
 
-    return df
+    return package_path, csv_file_path
 
 
 

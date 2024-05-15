@@ -1,0 +1,57 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<title>{{ title }}</title>
+<div class="container">
+    <div class="header text-center mb-4">
+        <h1>Welcome to Our Service</h1>
+        <p class="lead">Upload your file with ease and convenience.</p>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Upload Your File</h2>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="languageSelect">Select Your Native Language</label>
+                            <select id="languageSelect" class="form-control" name="languageSelect">
+                                <option value="english">English</option>
+                                <option value="spanish">Spanish</option>
+                                <option value="french">French</option>
+                                <option value="german">German</option>
+                            </select>
+                        </div>
+                    
+                        <div class="form-group">
+                            <label>Select Wanted Fields:</label>
+                            <div id="tickedFieldsCheckboxes">
+                                <div id="tickedFieldsCheckboxes">
+                                    <input type="checkbox" name="tickedFields" value="synonyms">synonyms<br>
+                                    <input type="checkbox" name="tickedFields" value="test">test<br>
+                                    <input type="checkbox" name="tickedFields" value="first example">first example<br>
+                                    <input type="checkbox" name="tickedFields" value="second example">second example<br>
+                                    <input type="checkbox" name="tickedFields" value="explanation">explanation<br>
+                                    <input type="checkbox" name="tickedFields" value="hint">hint<br>
+                                    <input type="checkbox" name="tickedFields" value="definition">definition<br>
+                                    <input type="checkbox" name="tickedFields" value="grammar">grammar<br>
+                                    <input type="checkbox" name="tickedFields" value="conjugation">conjugation<br>
+                                    <input type="checkbox" name="tickedFields" value="long_test_message">long_test_message<br>
+                                </div>
+                            </div>
+                        </div>                           
+                        <div class="form-group">
+                            <label for="fileUpload">File input</label>
+                            <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

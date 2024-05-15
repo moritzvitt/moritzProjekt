@@ -56,3 +56,42 @@ var wantedFields = [
     checkboxesContainer.appendChild(document.createElement("br"));
   });
   
+//   window.onload = function() {
+//     document.getElementById('submit').addEventListener('click', function(event) {
+//       var fileUpload = document.getElementById('fileUpload');
+//       if (!fileUpload.value) {
+//         event.preventDefault();
+//         // Load test data frame
+//         fetch('/Users/moritzvitt/src/LR2Anki/test_dataframes/jn_items.csv')
+//           .then(response => response.text())
+//           .then(data => {
+//             // Do something with the data
+//             console.log(data);
+//           })
+//           .catch(error => console.error(error));
+//       }
+//     });
+// };
+
+window.onload = function() {
+  document.getElementById('fileUpload').addEventListener('change', function(event) {
+      var file = event.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function(e) {
+          var contents = e.target.result;
+          var lines = contents.split('\n');
+          var html = '<table class="table">';
+          lines.forEach(function(line) {
+              html += '<tr>';
+              var cells = line.split(',');
+              cells.forEach(function(cell) {
+                  html += '<td>' + cell + '</td>';
+              });
+              html += '</tr>';
+          });
+          html += '</table>';
+          document.getElementById('uploadedDataframe').innerHTML = html;
+      };
+      reader.readAsText(file);
+  });
+};
