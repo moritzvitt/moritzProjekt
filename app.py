@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session,  send_from_directory
+from flask import Flask, render_template, request, redirect, url_for, session,  send_from_directory, send_file
 import os
 import pandas as pd
 import yaml
@@ -12,7 +12,6 @@ app.secret_key = 'your_secret_key_here'
 # Set the folder to save uploaded files
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 
 @app.route('/', methods=['GET'])
@@ -67,20 +66,16 @@ def upload_file():
     wanted_fields = {field: field in ticked_fields for field in all_fields}
     print("wanted_fields: ", wanted_fields, "\n")
 
-    # Wrap all the values wanted_fields and native_language in a config_dict
     config = {
         'wanted_fields': wanted_fields,
         'target_language': 'Japanese', # 'Japanese' is the default target language
         'native_language': native_language
     }
-    
-    print("config_dict: ", config, "\n")
+
     # store config in the session
     session['config'] = config
     
-    
-    # # Return the selected fields, native language, and DataFrame as an HTML table
-    return render_template('index.html', title='upload', native_language=native_language, wanted_fields=ticked_fields, df=dfa)
+    return render_template('upload.html', title='upload', native_language=native_language, wanted_fields=ticked_fields, df=dfa)
 
 
 @app.route('/generate', methods=['GET', 'POST'])
@@ -99,13 +94,26 @@ def generate():
     df = df[['word', 'short_phrase', 'word_translation', 'long_phrase', 'machine_translation', 'human_translation', 'synonyms', 'test', 'explanation']]
     output_file_path = os.path.join(app.config['DOWNLOAD_FOLDER'])
     package_path, csv_file_path = export_df(df, package, config, output_file_path)
+    # write the paths to the session
+    session['package_path'] = package_path
+    session['csv_file_path'] = csv_file_path
     
-    return render_template('index.html', title='Home', df=df, package_filename=package_path, csv_path=csv_file_path)
+    return render_template('generate.html', title='Home', df=df, package_filename=package_path, csv_path=csv_file_path)
 
 
-@app.route('/download', methods=['GET', 'POST'])
-def download(filename):
-    return send_from_directory(directory=app.config['DOWNLOAD_FOLDER'], filename=filename)
+@app.route('/download/<file_type>', methods=['GET'])
+def download(file_type):
+    if file_type == 'package':
+        file_path = session.get('package_path', None)
+    elif file_type == 'csv':
+        file_path = session.get('csv_file_path', None)
+    else:
+        return "Invalid file type requested", 400
+
+    if file_path is None:
+        return "File not found", 404
+
+    return send_file(file_path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)

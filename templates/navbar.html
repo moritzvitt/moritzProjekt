@@ -1,98 +1,44 @@
-{% extends "base.html" %}
 
-{% block content %}
-<title>{{ title }}</title>
-<div class="container">
-    </div>
-    <div class="header text-center mb-4">
-        <h1>Language Reactor export.csv to Anki.apkg</h1>
-        <p class="lead">Upload your file with ease and convenience.</p>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title">Upload Your File</h2>
-                    <form action="/upload" method="post" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <!-- <label for="fileUpload">File input</label> -->
-                            <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required>
-                            <br>
-                            <label for="fileContent">File Content:</label>
-                            <textarea class="form-control" id="fileContent" name="fileContent" rows="5" readonly></textarea>
-                        </div>
-                        </div>
-                        <br>
-                        <div class="form-group">
-                            <label for="languageSelect">Select Your Native Language</label>
-                            <select id="languageSelect" class="form-control" name="languageSelect">
-                                <option value="english">English</option>
-                                <option value="spanish">Spanish</option>
-                                <option value="french">French</option>
-                                <option value="german">German</option>
-                            </select>
-                        </div>
-                    <br>
-                        <div class="form-group">
-                            
-                            <label>Select Wanted Fields:</label>
-                            <div id="tickedFieldsCheckboxes">
-                                <div id="tickedFieldsCheckboxes">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <input class="form-check-input active" type="checkbox" name="tickedFields" value="synonyms" id="synonymsCheckbox" checked>
-                                            <label class="form-check-label stretched-link" for="synonymsCheckbox">Synonyms</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="test" id="testCheckbox" checked>
-                                            <label class="form-check-label stretched-link" for="testCheckbox">Test</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="first_example" id="firstExampleCheckbox" checked>
-                                            <label class="form-check-label stretched-link" for="firstExampleCheckbox">Example 1</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="second_example" id="secondExampleCheckbox">
-                                            <label class="form-check-label stretched-link" for="secondExampleCheckbox">Example 2</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="explanation" id="explanationCheckbox">
-                                            <label class="form-check-label stretched-link" for="explanationCheckbox">Explanation</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="hint" id="hintCheckbox">
-                                            <label class="form-check-label stretched-link" for="hintCheckbox">Hint</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="definition" id="definitionCheckbox">
-                                            <label class="form-check-label stretched-link" for="definitionCheckbox">Definition</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="grammar" id="grammarCheckbox">
-                                            <label class="form-check-label stretched-link" for="grammarCheckbox">Grammar</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="conjugation" id="conjugationCheckbox">
-                                            <label class="form-check-label stretched-link" for="conjugationCheckbox">Conjugation</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="long_test_message" id="longTestMessageCheckbox">
-                                            <label class="form-check-label stretched-link" for="longTestMessageCheckbox">Long Test Message</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                                </div>
-                            </div>
-                        </div>                  
 
-                        <button type="submit" class="btn btn-primary ">Upload</button>
-                        
-                    </form>
-                    
-                </div>
-            </div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+        <li class="nav-item">
+            
+          <a class="navbar-brand" href="#">
+            <img src="{{ url_for('static', filename='images/dinosaur.webp') }}" alt="Unicorn Icon" style="width: 50px; height: 50px;">
+    
+            </a>
+        </li>
+        </li>
+      </ul>
     </div>
-</div>
-{% endblock %}
+  </nav>
+
+
+
+
 

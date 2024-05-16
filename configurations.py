@@ -1,6 +1,6 @@
 import yaml
 
-def basic_configurations(df):
+def basic_configurations(df, config):
 
     # need to load column_names from the config file
     target_language = config['target_language'] 

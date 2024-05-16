@@ -6,8 +6,8 @@ native_language: English
 # Which fields do you want to generate?
 wanted_fields:
   synonyms: true
-  test: false
-  explanation: false
+  test: true
+  explanation: true
   first_example: false
   second_example: false
   hint: false

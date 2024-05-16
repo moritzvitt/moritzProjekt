@@ -1,105 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <title>{{ title }}</title>
-    <div class="container">
-        
-        <div class="row justify-content-center gy-md-5 gy-2">
-            <div class="col-xl-4">
+<title>{{ title }}</title>
+
+<div class="container">
+    <div class="row justify-content-center gy-md-5 gy-2">
+        <!-- First Column for Form -->
+        <div class="col-md-6 col-lg-6">
+            <div class="box">
                 <div class="header text-center mb-4">
-                    <h1>Language Reactor export.csv to Anki.apkg</h1>
-                    <p class="lead">Upload your file with ease and convenience.</p>
+                    <p></p>
+                    <!-- <h1>Language Reactor export.csv to Anki.apkg</h1> -->
+                    <p class="lead">Choose your configurations!</p>
                 </div>
-                <div class="card">
+                <div class="card shadow-sm p-3 mb-5 bg-light rounded">
+                <!-- <div class="card shadow-sm p-3 mb-5 bg-light rounded"> -->
+                <!-- <div class="card shadow-sm p-3 mb-5 bg-success-subtle rounded"> -->
+                <!-- <div class="card shadow-sm p-3 mb-5 bg-body-tertiary rounded"> -->
                     <div class="card-body">
-                        <h2 class="card-title">Upload Your File</h2>
+                        <!-- <h2 class="card-title">Upload Your File</h2> -->
                         <form action="/upload" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <input type="file" class="form-control-file" id="fileUpload" name="fileUpload" required>
                             </div>
-                            <br>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label for="languageSelect">Select Your Native Language</label>
-                                <select id="languageSelect" class="form-control" name="languageSelect">
-                                    <option value="english">English</option>
-                                    <option value="spanish">Spanish</option>
-                                    <option value="french">French</option>
-                                    <option value="german">German</option>
-                                </select>
+                                {% include "languageSelect.html" %}
                             </div>
-                            <br>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label>Select Wanted Fields:</label>
-                                <div id="tickedFieldsCheckboxes">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <input class="form-check-input active" type="checkbox" name="tickedFields" value="synonyms" id="synonymsCheckbox">
-                                            <label class="form-check-label stretched-link" for="synonymsCheckbox">Synonyms</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="test" id="testCheckbox" checked>
-                                            <label class="form-check-label stretched-link" for="testCheckbox">Test</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="first_example" id="firstExampleCheckbox">
-                                            <label class="form-check-label stretched-link" for="firstExampleCheckbox">Example 1</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="second_example" id="secondExampleCheckbox">
-                                            <label class="form-check-label stretched-link" for="secondExampleCheckbox">Example 2</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="explanation" id="explanationCheckbox">
-                                            <label class="form-check-label stretched-link" for="explanationCheckbox">Explanation</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="hint" id="hintCheckbox">
-                                            <label class="form-check-label stretched-link" for="hintCheckbox">Hint</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="definition" id="definitionCheckbox">
-                                            <label class="form-check-label stretched-link" for="definitionCheckbox">Definition</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="grammar" id="grammarCheckbox">
-                                            <label class="form-check-label stretched-link" for="grammarCheckbox">Grammar</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="conjugation" id="conjugationCheckbox">
-                                            <label class="form-check-label stretched-link" for="conjugationCheckbox">Conjugation</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input class="form-check-input" type="checkbox" name="tickedFields" value="long_test_message" id="longTestMessageCheckbox">
-                                            <label class="form-check-label stretched-link" for="longTestMessageCheckbox">Long Test Message</label>
-                                        </li>
-                                    </ul>
-                                </div>
+                                {% include "list.html" %}
                             </div>
-                            <br>
                             <button type="submit" class="btn btn-primary">Upload</button>
-                            <button onclick="location.href='/generate'" type="button" class="btn btn-primary">Generate</button>
-                            <a href="/download/{{ package_filename }}" download class="btn btn-primary">Download</a>
-                            <a href="/download/{{ csv_filename }}" download class="btn btn-primary">Download</a>
                         </form>
                     </div>
                 </div>
-                
             </div>
-            <div class="col-xl-8">
-                <!-- New container for displaying the uploaded dataframe -->
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Uploaded Dataframe</h2>
-                        {% include 'upload.html' %}
-                        <!-- Placeholder for the uploaded dataframe -->
-                        <div id="uploadedDataframe">
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
         </div>
-    
-    
+
+        <!-- Second Column for Additional Content -->
+        <div class="col-md-6 col-lg-6">
+            <div class="box">
+                <div class="header text-center mb-4">
+                    <p></p>
+                    <!-- <h1>Language Reactor export.csv to Anki.apkg</h1> -->
+                    <p class="lead">Anki Flashcard Layout</p>
+                </div>
+            <div class="card">
+                {% include "moin shorter.html" %}
+            </div>
+        </div>
+    </div>
+    <div class="row gy-md-5 gy-2">
+        <div class="box justify-content-center align-items-center">
+            <img src="static/images/francy.webp" width="200" height="200" class="center" style="max-width: 100%; max-height: 100%;">
+        </div>
+    </div>
+</div>
+
 {% endblock %}

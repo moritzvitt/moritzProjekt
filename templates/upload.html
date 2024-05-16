@@ -1,27 +1,44 @@
+{% extends 'index.html' %}
 
 {% block content %}
 
+<div class="col-xl-8">
+    <!-- New container for displaying the uploaded dataframe -->
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Uploaded Dataframe</h2>
+            <!-- {% include 'upload.html' %} -->
 
-<div class="table-responsive">
-    <table class="table table-primary table-bordered border-primary">  
-        <thead>
-            <tr>
-                {% for col in df.columns %}
-                    <th scope="col">{{ col }}</th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in df.values %}
-                <tr>
-                    {% for val in row %}
-                        <td class="short-cell">{{ val }}</td>  <!-- Apply custom class -->
-                    {% endfor %}
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            <div class="table-responsive">
+                <table class="table table-primary table-bordered border-primary">  
+                    <thead>
+                        <tr>
+                            {% for col in df.columns %}
+                                <th scope="col">{{ col }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in df.values %}
+                            <tr>
+                                {% for val in row %}
+                                    <td class="short-cell">{{ val }}</td>  
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- Placeholder for the uploaded dataframe -->
+            <div id="uploadedDataframe">
+            
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
 
 
 {% endblock %}

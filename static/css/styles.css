@@ -9,3 +9,72 @@
     overflow: hidden;  /* Hides overflowed text */
 }
 
+
+/* Define color variables at the root level */
+:root {
+    --primary-color: #d4b5ff; /* Light purplish color */
+    --primary-color-hover: #b299e6; /* Slightly darker shade for hover states */
+    --border-color: #d4b5ff; /* Border color */
+    --focus-outline-color: rgba(212, 181, 255, 0.5); /* Focus outline color */
+    --success-color: #28a745; /* Green color for success messages */
+}
+
+.success {
+    color: var(--success-color);
+}
+
+.form-check-input:hover {
+    outline: 2px var(--success-color);
+    outline-offset: -2px;
+    background-color: var(--primary-color);
+    border-color: var(--success-color);
+}
+
+/* .row.display-flex {
+    display: flex;
+    flex-wrap: wrap;    
+  }
+  .row.display-flex > [class*='col-'] {
+    display: flex;
+    flex-direction: column;
+  } *
+  
+/* Change the primary color for buttons and form controls */
+.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
+}
+
+/* Change the active color for checkboxes */
+.form-check-input:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Change the color of the focus outline */
+.form-check-input:focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem var(--focus-outline-color);
+}
+
+.frame {
+    border: 2px solid black; /* Change the color and thickness as needed */
+    padding: 10px; /* Adjust padding as needed */
+    display: inline-block; /* Ensures the frame only takes up as much space as its content */
+}
+
+.cloze {
+    font-size: 26px;
+    font-weight: italic;
+    color:rgb(100, 70, 250);
+}
+
+.nightMode .cloze {
+    font-size: 26px;
+    font-weight: italic;
+    color: rgb(234, 166, 11);
+}

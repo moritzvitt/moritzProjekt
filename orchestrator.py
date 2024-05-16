@@ -13,12 +13,13 @@ from gpt import create_ai_prompts, handle_API_errors, get_ai_response
 
 def main(df, config):
     
-    df, merged = basic_configurations(config, df)
+    df, merged = basic_configurations(df, config)
 
     prompts_df = create_ai_prompts(df, merged, config)
     handle_API_errors(get_ai_response, df, prompts_df)
     
     formatting(df, config)
+    
     df = df.map(lambda x: add_furigana(x) if isinstance(x, str) else x)
 
     package = generate_anki_deck(df)  # Ensure this function accepts the dataframe and processes it accordingly
@@ -41,5 +42,5 @@ if __name__ == "__main__":
     package, df = main(df, config)
 
     output_file_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    export_df(df, config, package, output_file_path)
+    export_df(df, package, config, output_file_path)
 # %%
