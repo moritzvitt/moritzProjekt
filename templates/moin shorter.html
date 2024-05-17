@@ -1,37 +1,25 @@
 <div class="box">
     <card>
-        <div class="mx-4 my-4">
-            "This is your sentence with a <span class="cloze">cloze deletion</span> in it." 
+        <div class="mx-4 my-4 text-center h2">
+            "This is your sentence with a <span class="cloze" onmouseover="this.innerHTML = 'I am the cloze 😊'" onmouseout="this.innerHTML = '[...cloze deletion...]'">[...cloze deletion...]</span> in it." 
         </div>
+        <!-- </div> -->
     </card>
-    <br>
-        <div id="hint" class="hint">
+        <div id="hint" class="fw-bold hint text-center">
+        <!-- <div id="hint" class="mx-4 hint align-items-center"> -->
+        <!-- <div id="hint" class="mx-4 my-2 hint"> -->
             hint details: thin, weak physically.
         </div>
     <br>
-    <div class="mx-4 my-2">
+    <div class="mx-4">
+        <div id="hint" class="fw-bold hint text-center toggle-div">Hint details: thin, weak physically.</div>
+        <div id="explanation" class="toggle-div explanation">Explanation details.</div>
+        <div id="example1" class="toggle-div example">Example 1 details.</div>
+        <div id="example2" class="toggle-div example">Example 2 details.</div>
+        <div id="grammar" class="toggle-div grammar">Grammar details.</div>
+        <div id="conjugation" class="toggle-div conjugation">Conjugation details.</div>
         <hr>
-        <div id="explanation" class="explanation">
-            Explanation details.
-        </div>
-        <hr>
-        <div id="example1" class="example">
-            Example 1 details.
-        </div>
-        <hr>
-        <div id="example2" class="example">
-            Example 2 details.
-        </div>
-        <hr>
-        <div id="grammar" class="grammar">
-            Grammar details.
-        </div>
-        <hr>
-        <div id="conjugation" class="conjugation">
-            Conjugation details.
-        </div>
-        <hr>
-        <div id="translation" class="translation">
+        <div id="translation" class="toggle-div translation">
             Translation details.
         </div>
 
@@ -44,3 +32,4 @@
             Hyoro Hyoro, skinny, thin
         </div>
 </div>
+

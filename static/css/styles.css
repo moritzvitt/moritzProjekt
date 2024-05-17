@@ -23,6 +23,17 @@
     color: var(--success-color);
 }
 
+.animate-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s;
+  }
+  
+  .animate-item.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
 .form-check-input:hover {
     outline: 2px var(--success-color);
     outline-offset: -2px;
@@ -68,7 +79,7 @@
 }
 
 .cloze {
-    font-size: 26px;
+    /* font-size: 26px; */
     font-weight: italic;
     color:rgb(100, 70, 250);
 }

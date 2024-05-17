@@ -1,44 +1,51 @@
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
+<nav class="navbar navbar-light bg-transparent">
+  <div class="d-flex flex-row align-items-center w-100">
+    <a class="navbar-brand mx-2 px-2 py-1 d-flex align-items-center justify-content-center rounded" aria-label="Toggle navigation">
+      <i class="bi bi-house-heart h1 text-danger"></i>
+    </a>
+    <div class="navbar-collapse justify-content-center" id="navbarIcons">
+      <ul class="navbar-nav flex-row">
+        <li class="nav-item animate-item">
+          <a class="navbar-brand mx-2 px-2 py-1 d-flex align-items-center justify-content-center rounded" href="#">
+            <i class="bi bi-bag-heart-fill h3"></i>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
         </li>
-        <li class="nav-item">
-            
-          <a class="navbar-brand" href="#">
-            <img src="{{ url_for('static', filename='images/dinosaur.webp') }}" alt="Unicorn Icon" style="width: 50px; height: 50px;">
-    
-            </a>
+        <li class="nav-item animate-item">
+          <a class="navbar-brand mx-2 px-2 py-1 d-flex align-items-center justify-content-center rounded" href="#">
+            <i class="bi bi-cake2 h3"></i>
+          </a>
         </li>
+        <li class="nav-item animate-item">
+          <a class="navbar-brand mx-2 px-2 py-1 d-flex align-items-center justify-content-center rounded" href="#">
+            <i class="bi bi-cart3 h3"></i>
+          </a>
+        </li>
+        <li class="nav-item animate-item">
+          <a class="nav-link disabled mx-2 px-2 py-1 d-flex align-items-center justify-content-center rounded" aria-disabled="true">Disabled</a>
         </li>
       </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
+<style>
+  .navbar-brand,
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem; /* Smaller padding */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s, color 0.3s;
+  }
 
+  .navbar-brand:hover,
+  .nav-item:hover {
+    background-color: #e0e0e0; /* Light grey hover color */
+    color: #000;
+  }
 
-
-
+  .navbar-nav .nav-item {
+    margin: 0; /* Remove margin for closer spacing */
+  }
+</style>
