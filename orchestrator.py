@@ -41,6 +41,6 @@ if __name__ == "__main__":
     
     package, df = main(df, config)
 
-    output_file_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    output_file_path = os.path.join(os.path.expanduser("~"), "src", "LR2Anki", "downloads")
     export_df(df, package, config, output_file_path)
 # %%

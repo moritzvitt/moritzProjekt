@@ -23,7 +23,7 @@ $(document).ready(function() {
   $(document).ready(function() {
     // Function to update the visibility of divs in div_values.html
     function updateDivVisibility() {
-        ['hint', 'explanation', 'example1', 'example2', 'grammar', 'conjugation', 'translation'].forEach(function(id) {
+        ['hint', 'test', 'synonyms', 'explanation', 'definition', 'first_example', 'second_example', 'grammar', 'conjugation', 'translation'].forEach(function(id) {
             var displayStyle = localStorage.getItem('display-' + id) || 'none';
             $('#' + id).css('display', displayStyle);
         });
@@ -50,19 +50,3 @@ $(document).ready(function() {
     }
 });
 
-  // $(document).ready(function() {
-//   // Initially hide all divs
-//   $('.toggle-div').hide();
-
-//   // For each checkbox
-//   $('input[type="checkbox"]').each(function() {
-//     // Get the corresponding div id from the checkbox id
-//     var divId = '#' + this.id.replace('Checkbox', '');
-
-//     // When the checkbox state changes
-//     $(this).change(function() {
-//       // Toggle the visibility of the corresponding div
-//       $(divId).toggle(this.checked);
-//     });
-//   });
-// });

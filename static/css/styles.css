@@ -1,19 +1,7 @@
-.table td, .table th {
-    height: 50px !important;
-}
-.short-cell {
-    height: 40px;
-    white-space: normal;  /* Allows text to wrap */
-    word-break: break-all;  /* Allows unbreakable words to be broken */
-    /* line-break: strict;  Adheres to strict line breaking rules for Japanese text */
-    overflow: hidden;  /* Hides overflowed text */
-}
-
-
 /* Define color variables at the root level */
 :root {
-    --primary-color: #d4b5ff; /* Light purplish color */
-    --primary-color-hover: #b299e6; /* Slightly darker shade for hover states */
+    --primary-color: #7825eb; /* Light purplish color */
+    --primary-color-hover: #cbc1e1; /* Slightly darker shade for hover states */
     --border-color: #d4b5ff; /* Border color */
     --focus-outline-color: rgba(212, 181, 255, 0.5); /* Focus outline color */
     --success-color: #28a745; /* Green color for success messages */
@@ -37,7 +25,7 @@
 .form-check-input:hover {
     outline: 2px var(--success-color);
     outline-offset: -2px;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-hover);
     border-color: var(--success-color);
 }
 

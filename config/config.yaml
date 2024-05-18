@@ -8,12 +8,12 @@ wanted_fields:
   synonyms: true
   test: true
   explanation: true
-  first_example: false
-  second_example: false
-  hint: false
-  definition: false
-  grammar: false
-  conjugation: false
+  first_example: true
+  second_example: true
+  hint: true
+  definition: true
+  grammar: true
+  conjugation: true
   long_test_message: false
   
 column_names:

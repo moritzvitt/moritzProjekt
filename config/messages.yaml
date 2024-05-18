@@ -42,3 +42,10 @@ long_test_message:
   "Write a story that takes you 20 seconds to write! 
   I am testing something here with the chatGPT API call timeout. 
   You need to write a long story for me, so that the API call lasts at least 15 seconds."
+
+# TODO add a messages to check the word_type
+# - if verb: tell me the stem (maybe conjugation)
+# - if adjective: also give me feminin and plurael forms (if irregular)
+# - if noun, maybe also the plural form
+
+# TODO add option for target language synonyms...
