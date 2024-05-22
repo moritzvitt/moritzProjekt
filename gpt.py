@@ -36,6 +36,7 @@ def create_ai_prompts(df, merged, config):
 # Configure the default for all requests:
 client = OpenAI(
     # default is 2
+    api_key=os.environ.get("OPENAI_API_KEY")
     max_retries=0,
     timeout=30, # 10 seconds
 )

@@ -5,4 +5,5 @@ venv
 test_dataframes/
 __pycache__/
 uploads/
+downloads/
 other
