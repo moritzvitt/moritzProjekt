@@ -1,0 +1,10 @@
+2024-05-21 22:02:26,751 - INFO - logging_config - Creating AI prompts dataframe...
+2024-05-21 22:02:26,800 - INFO - logging_config - Starting API call loop...
+2024-05-21 22:02:27,552 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 22:02:28,336 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 22:02:28,985 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 22:02:29,413 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 22:02:30,315 - INFO - httpx - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-05-21 22:02:30,318 - INFO - logging_config - API calls completed with 0 errors. Cleaning DataFrame...
+2024-05-21 22:02:30,367 - INFO - root - Anki package "/Users/moritzvitt/src/LR2Anki/downloads/English_LLN_20240521220230.apkg" has been created.
+2024-05-21 22:02:30,374 - INFO - root - CSV file "/Users/moritzvitt/src/LR2Anki/downloads/English_LLN_20240521220230.csv" has been created.
