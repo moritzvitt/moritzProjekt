@@ -14,17 +14,33 @@ from gpt import create_ai_prompts, handle_API_errors, get_ai_response
 
 
 
-
+@log_io
+# TODO main should accept a df over 50 rows long
 def main(df, config):
-    
+
+    # Load all configuration files
     with open('config/column_names.yaml', 'r') as file:
         data = yaml.safe_load(file)
-        # the column names are stored in a list, the list's name is column_names
         column_names = data['column_names']
 
-    df, merged = basic_configurations(df=df, target_language = config['target_language'], native_language = config['native_language'], column_names=column_names)
+    with open('config/messages.yaml', 'r') as file:
+        messages_yaml = yaml.safe_load(file)
 
-    prompts_df = create_ai_prompts(df, merged, config)
+    with open('config/examples.yaml', 'r') as file:
+        examples_yaml = yaml.safe_load(file)
+
+    # TODO target_langugage default value should come from df, 
+    # only if user decides to set a different one, take the value from the config
+
+    df, merged_messages = basic_configurations(df=df, 
+                                      target_language=config['target_language'], 
+                                      native_language=config['native_language'], 
+                                      column_names=column_names, 
+                                      messages=messages_yaml, 
+                                      examples=examples_yaml
+                                    )
+
+    prompts_df = create_ai_prompts(df, merged=merged_messages, config=config)
     handle_API_errors(get_ai_response, df, prompts_df)
     
     formatting(df, config)

@@ -1,43 +1,37 @@
 import yaml
-from logging_config import logger, log_io
+from logging_config import log_io
 
 @log_io
-def basic_configurations(df, target_language, native_language, column_names):
+def basic_configurations(df, target_language, native_language, column_names, messages, examples):
     """
-    This function performs basic configurations on the input DataFrame.
+    This function performs basic configurations on the input DataFrame and merges the messages and examples dictionaries.
 
     Parameters:
     df (pandas.DataFrame): The input DataFrame to be configured.
     config (dict): The configuration settings.
+    column_names (list): A list of column names.
+    messages (dict): A dictionary containing the general messages.
+    examples (dict): A dictionary containing examples, specific to the target language.
 
     Returns:
-    tuple: A tuple containing the configured DataFrame and a merged object.
+    tuple: A tuple containing the configured DataFrame and a merged dictionary.
     """
     
     # assign column_names to the dataframe
     df.columns = column_names
-
+    
     # add columns to the dataframe
     df['native_language'] = native_language
     df['target_language'] = target_language
 
-    # Load both YAML files
-    with open('config/messages.yaml', 'r') as file:
-        messages_yaml = yaml.safe_load(file)
-
-    with open('config/examples.yaml', 'r') as file:
-        examples_yaml = yaml.safe_load(file)
-
     # Find the corresponding section in examples_yaml
-    examples = examples_yaml[target_language]
+    examples = examples[target_language]
     # Merge the strings from identical keys
-    merged = {key: messages_yaml.get(key, '') + ' ' + examples.get(key, '') for key in set(messages_yaml) | set(examples)}
-    #print every key and value in the merged dictionary
-    for key, value in merged.items():
-        print(key, value)
+    merged = {key: messages.get(key, '') + ' ' + examples.get(key, '') for key in set(messages) | set(examples)}
 
-    # TODO add the possibility to submit phrases with distinct instructions?
+    # TODO add the possibility to submit phrases with distinct instructions? (maybe using python classes)
     # drop all rows where word_or_phrase is phrase
     df = df[df['word_or_phrase'] != 'Phrase']
 
     return df, merged 
+

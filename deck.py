@@ -71,28 +71,51 @@ def generate_anki_deck(df):
 # export the df as an anki package and csv file
 
 @log_io
-def export_df(df, package, native_language, output_file_path):
+def export_df(df, package, native_language, output_file_path, encoding='utf-8'):
+  """
+  Exports an Anki package and a cleaned DataFrame to CSV.
 
-    # Save the Anki package to the Desktop
-    current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
-    package_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.apkg')
-    package.write_to_file(package_path)
+  Args:
+      df (pandas.DataFrame): The DataFrame to export.
+      package (anki.Package): The Anki package to save.
+      native_language (str): The native language of the data.
+      output_file_path (str): The path to save the files.
+      encoding (str, optional): The encoding for the CSV file. Defaults to 'utf-8'.
 
+  Returns:
+      tuple: A tuple containing the paths to the exported Anki package and CSV file.
 
-    # clean the df
-    # Replace empty strings with NaN
-    df = df.replace('', np.nan).infer_objects(copy=False)
-    
-    # Drop columns that only contain NaN
-    df = df.dropna(how='all', axis=1)
+  This function performs the following actions:
 
-    # Save the DataFrame as a CSV file to the Desktop
-    csv_file_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.csv')
-    df.to_csv(csv_file_path, index=False, sep='\t')
+      1. Saves the Anki package with a timestamped filename.
+      2. Replaces empty strings with NaN values in the DataFrame.
+      3. Handles potential missing data by:
+          - Optionally dropping columns containing only NaN values (default).
+          - Optionally filling NaN values with a specified value (future implementation).
+      4. Exports the cleaned DataFrame as a CSV file with a timestamped filename,
+         using tab ('\t') as the delimiter and the specified encoding.
 
-    logger.info(f'CSV file "{csv_file_path}" has been created.')
+  """
 
-    return package_path, csv_file_path
+  # Maintain current logic for Anki package saving
+  current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
+  package_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.apkg')
+  package.write_to_file(package_path)
+
+  # Data cleaning with flexibility
+  df.replace('', np.nan, inplace=True)  # Replace empty strings with NaN (inplace modification)
+  # Option 1: Drop columns with only NaN values (existing functionality)
+  df.dropna(how='all', axis=1, inplace=True)
+
+  # Option 2: Fill NaN values with a specified value (future implementation)
+  # You can add logic here to fill NaN values with a desired value (e.g., df.fillna(0))
+
+  # Save DataFrame as CSV with customizations
+  csv_file_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.csv')
+  df.to_csv(csv_file_path, index=False, sep='\t', encoding=encoding)
+
+  return package_path, csv_file_path
+
 
 
 

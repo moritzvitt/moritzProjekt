@@ -9,7 +9,7 @@ column_names:
   - NAN
   - word_translation
   - website
-  - language
+  - target_language
   - translation_language
   - romaji
   - long_romaji
