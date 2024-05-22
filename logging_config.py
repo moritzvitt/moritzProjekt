@@ -17,11 +17,16 @@ os.makedirs(log_dir, exist_ok=True)
 
 log_file = os.path.join(log_dir, f'{current_time}_app.log')
 
-# Configure the logger with desired file path and format
+log_format = ('\n'
+              '================================================================\n'
+              '%(asctime)s - %(levelname)s - %(name)s - [%(funcName)s:%(lineno)d]\n'
+              'Message: %(message)s\n'
+              '----------------------------------------------------------------\n')
+
 logging.basicConfig(
-    filename=log_file,  # Replace with your desired filename and path
+    filename=log_file,
     level=log_level,
-    format='%(asctime)s - %(levelname)s - %(name)s - %(message)s'
+    format=log_format
 )
 
 # Get the logger instance
@@ -36,7 +41,8 @@ import pandas as pd
 def log_io(func):
     def wrapper(*args, **kwargs):
         # Log function inputs
-        logger.warning(f"Function {func.__name__} called with args: {args} and kwargs: {kwargs}")
+
+        logger.info(f"Function {func.__name__} called with args: {args} and kwargs: {kwargs}")
 
         # Call the function and get the result
         result = func(*args, **kwargs)

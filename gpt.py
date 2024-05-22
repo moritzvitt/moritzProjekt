@@ -19,20 +19,15 @@ def create_ai_prompts(df, merged, config):
         message_name = message
         prompts_df[message_name] = df.apply(lambda row: load_and_resolve_template(row.to_dict(), merged[message_name]), axis=1)
 
-    print("Applied template to df; created df_messages.")
 
     def filter_fields(df, wanted_fields):
         for field, value in wanted_fields.items():
             if not value:
                 df.drop(field, axis=1, inplace=True)
-                logger.info("Dropped all unselected fields")
         return df
 
     # apply filter field to the df_messages and return the df_messages
     prompts_df = filter_fields(prompts_df, config["wanted_fields"])
-    
-
-    logger.info("Creating AI prompts dataframe...")
     return prompts_df
 
 # try 3 times. If it doesn't work, just go one with the next one.
@@ -46,7 +41,7 @@ client = OpenAI(
     timeout=30, # 10 seconds
 )
 
-@log_io
+
 def get_ai_response(message):
     try:
         response = client.chat.completions.create(

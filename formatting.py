@@ -1,7 +1,9 @@
 import pandas as pd
 import re
 import random
+from logging_config import logger, log_io
 
+@log_io
 def formatting(df, config):
 
     # NOTE can potentially remove add_fields function, 

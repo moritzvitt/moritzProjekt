@@ -27,6 +27,8 @@ def generate_anki_deck(df):
     model = genanki.Model(
         model_id,
         'Language Learning with Netflix Model',
+        
+        # TODO don't combine fields in the definition and notes, fields. Use the new anki_flashcard.html 
         fields=[
             {'name': 'ID'},
             {'name': 'cloze'},
@@ -83,6 +85,7 @@ def export_df(df, package, config, output_file_path):
     # clean the df
     # Replace empty strings with NaN
     df = df.replace('', np.nan).infer_objects(copy=False)
+    
     # Drop columns that only contain NaN
     df = df.dropna(how='all', axis=1)
 

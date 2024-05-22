@@ -13,7 +13,7 @@ from gpt import create_ai_prompts, handle_API_errors, get_ai_response
 from logging_config import logger, log_io 
 
 
-@log_io
+
 def main(df, config):
     
 
@@ -23,7 +23,7 @@ def main(df, config):
     # In orchestrator.py and other files
 
     # ... rest of your code using logger.info(), logger.error(), etc.
-    
+
     prompts_df = create_ai_prompts(df, merged, config)
     handle_API_errors(get_ai_response, df, prompts_df)
     

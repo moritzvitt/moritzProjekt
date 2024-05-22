@@ -1,8 +1,8 @@
 .env
 .venv
 venv/
-venv
 test_dataframes/
-__pycache__/
 uploads/
+downloads/
+__pycache__/
 other
