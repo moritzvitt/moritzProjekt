@@ -29,14 +29,14 @@ logger = logging.getLogger(logger_name)
 
 
 
+import logging
 import pandas as pd
 
-
-# integrate the decorator into the orchestrator.py. Understand what it does.
+# Define the log_io decorator
 def log_io(func):
     def wrapper(*args, **kwargs):
         # Log function inputs
-        logger.info(f"Function {func.__name__} called with args: {args} and kwargs: {kwargs}")
+        logger.warning(f"Function {func.__name__} called with args: {args} and kwargs: {kwargs}")
 
         # Call the function and get the result
         result = func(*args, **kwargs)

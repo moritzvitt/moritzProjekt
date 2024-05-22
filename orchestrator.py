@@ -10,15 +10,20 @@ from formatting import formatting #definition_field, notes_field
 from furigana import add_furigana
 from deck import generate_anki_deck, export_df
 from gpt import create_ai_prompts, handle_API_errors, get_ai_response
-from logging_config import logger
+from logging_config import logger, log_io 
 
+
+@log_io
 def main(df, config):
     
-    df, merged = basic_configurations(df, config)
-    # In orchestrator.py and other files
-    logger.info("Creating AI prompts dataframe...")
-    # ... rest of your code using logger.info(), logger.error(), etc.
 
+
+    df, merged = basic_configurations(df, config)
+
+    # In orchestrator.py and other files
+
+    # ... rest of your code using logger.info(), logger.error(), etc.
+    
     prompts_df = create_ai_prompts(df, merged, config)
     handle_API_errors(get_ai_response, df, prompts_df)
     

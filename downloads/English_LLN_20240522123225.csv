@@ -1,0 +1,56 @@
+ID	word_or_phrase	short_phrase	short_translation	word	stem	word_type	word_translation	website	language	translation_language	romaji	long_romaji	time_stamp	movie_code	source	date	long_phrase	machine_translation	human_translation	first_jpg	second_jpg	audio	native_language	target_language	test	image	cloze	notes
+WORD| 子[こ]|jaSpirited__Away2024-01-26__13:02__3908	Word	その 代[か]わり その 子[こ]を しっかり 守[まも]るんだよ	Instead, we're going to protect that child.	子[こ]	子[こ]	Noun	child, kid, son	Netflix	ja	en	ko	sono kawari sono ko wo shikkari mamoru n da yo	1339	60023642	Spirited Away	2024-01-26 13:02	"ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません
+その 代[か]わり その 子[こ]を しっかり 守[まも]るんだよ
+さあ  坊[ぼう]やたち お 帰[かえ]りの 時間[じかん]だよ"	"I won't do what you've done.
+Instead, we're going to protect that child.
+Come on, boy, it's time to go home."	"Haku, I no longer blame you for what you did.
+Just be sure you protect the girl.
+OK, boys, time to go home."	1706274141384_prev.jpg	1706274141384_next.jpg	[sound:1706274141384.mp3]	English	Japanese	Test	"<img src=""1706274141384_prev.jpg""><img src=""1706274141384_next.jpg"">"	"ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません
+その 代[か]わり その{{c1:: 子[こ]::}}を しっかり 守[まも]るんだよ
+さあ  坊[ぼう]やたち お 帰[かえ]りの 時間[じかん]だよ"	"Haku, I no longer blame you for what you did.
+Just be sure you protect the girl.
+OK, boys, time to go home.<br><br>child, kid, son<br>"
+WORD| 代[か]わり|jaSpirited__Away2024-01-26__13:02__8137	Word	その 代[か]わり その 子[こ]を しっかり 守[まも]るんだよ	Instead, we're going to protect that child.	代[か]わり	代[か]わり	Noun	substitute, alternate, replacement	Netflix	ja	en	kawari	sono kawari sono ko wo shikkari mamoru n da yo	1339	60023642	Spirited Away	2024-01-26 13:02	"ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません
+その 代[か]わり その 子[こ]を しっかり 守[まも]るんだよ
+さあ  坊[ぼう]やたち お 帰[かえ]りの 時間[じかん]だよ"	"I won't do what you've done.
+Instead, we're going to protect that child.
+Come on, boy, it's time to go home."	"Haku, I no longer blame you for what you did.
+Just be sure you protect the girl.
+OK, boys, time to go home."	1706274138536_prev.jpg	1706274138536_next.jpg	[sound:1706274138536.mp3]	English	Japanese	test	"<img src=""1706274138536_prev.jpg""><img src=""1706274138536_next.jpg"">"	"ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません
+その{{c1:: 代[か]わり::}} その 子[こ]を しっかり 守[まも]るんだよ
+さあ  坊[ぼう]やたち お 帰[かえ]りの 時間[じかん]だよ"	"Haku, I no longer blame you for what you did.
+Just be sure you protect the girl.
+OK, boys, time to go home.<br><br>substitute, alternate, replacement<br>"
+WORD| 事[こと]|jaSpirited__Away2024-01-26__13:02__3558	Word	ハク龍(りゅう) あなたのした 事[こと]は もうとがめません	I won't do what you've done.	事[こと]	事[こと]	Noun	thing, matter, fact	Netflix	ja	en	koto	haku ryuu ( ryuu ) anata no shi ta koto ha mou togame mase n	1338	60023642	Spirited Away	2024-01-26 13:02	"おばあちゃん ハク 生[い]きてた
+ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません
+その 代[か]わり その 子[こ]を しっかり 守[まも]るんだよ"	"Grandma, Haku was alive.
+I won't do what you've done.
+Instead, we're going to protect that child."	"Look, Granny, Haku's alive.
+Haku, I no longer blame you for what you did.
+Just be sure you protect the girl."	1706274135154_prev.jpg	1706274135154_next.jpg	[sound:1706274135154.mp3]	English	Japanese	test	"<img src=""1706274135154_prev.jpg""><img src=""1706274135154_next.jpg"">"	"おばあちゃん ハク 生[い]きてた
+ハク 龍[りゅう] あなたのした{{c1:: 事[こと]::}}は もうとがめません
+その 代[か]わり その 子[こ]を しっかり 守[まも]るんだよ"	"Look, Granny, Haku's alive.
+Haku, I no longer blame you for what you did.
+Just be sure you protect the girl.<br><br>thing, matter, fact<br>"
+WORD| 生[い]きる|jaSpirited__Away2024-01-26__13:02__2674	Word	おばあちゃん ハク 生[い]きてた	Grandma, Haku was alive.	生[い]き	生[い]きる	Verb	live, exist, survive	Netflix	ja	en	ikiru	o baachan haku iki te ta	1337	60023642	Spirited Away	2024-01-26 13:02	"グッドタイミングね
+おばあちゃん ハク 生[い]きてた
+ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません"	"Good timing.
+Grandma, Haku was alive.
+I won't do what you've done."	"Good timing, I'd say.
+Look, Granny, Haku's alive.
+Haku, I no longer blame you for what you did."	1706274132200_prev.jpg	1706274132200_next.jpg	[sound:1706274132200.mp3]	English	Japanese	test	"<img src=""1706274132200_prev.jpg""><img src=""1706274132200_next.jpg"">"	"グッドタイミングね
+おばあちゃん ハク{{c1:: 生[い]き::}}てた
+ハク 龍[りゅう] あなたのした 事[こと]は もうとがめません"	"Good timing, I'd say.
+Look, Granny, Haku's alive.
+Haku, I no longer blame you for what you did.<br><br>live, exist, survive<br>"
+WORD|タイミング|jaSpirited__Away2024-01-26__13:02__7338	Word	グッドタイミングね	Good timing.	タイミング	タイミング	Noun	timing, opportunity, chance	Netflix	ja	en	taimingu	guddo taimingu ne	1336	60023642	Spirited Away	2024-01-26 13:02	"よかった
+グッドタイミングね
+おばあちゃん ハク 生[い]きてた"	"It was good
+Good timing.
+Grandma, Haku was alive."	"Thank goodness.
+Good timing, I'd say.
+Look, Granny, Haku's alive."			[sound:1706274128872.mp3]	English	Japanese	Test	"<img src=""nan""><img src=""nan"">"	"よかった
+グッド{{c1::タイミング::}}ね
+おばあちゃん ハク 生[い]きてた"	"Thank goodness.
+Good timing, I'd say.
+Look, Granny, Haku's alive.<br><br>timing, opportunity, chance<br>"

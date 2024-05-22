@@ -1,5 +1,7 @@
 import yaml
+from logging_config import logger, log_io
 
+@log_io
 def basic_configurations(df, config):
 
     # need to load column_names from the config file
@@ -35,6 +37,7 @@ def basic_configurations(df, config):
     for key, value in merged.items():
         print(key, value)
 
+    # TODO add the possibility to submit phrases with distinct instructions?
     # drop all rows where word_or_phrase is phrase
     df = df[df['word_or_phrase'] != 'Phrase']
 
