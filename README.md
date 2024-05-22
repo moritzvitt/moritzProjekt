@@ -18,6 +18,7 @@ graph LR;
     C --> D{Basic configurations};
     D --> E{Create AI prompts};
     E --> F{Handle API errors};
+    F --> R(get_API_response)
     F --> G{Formatting};
     G --> H{Add Furigana};
     H --> I{Generate Anki deck};
