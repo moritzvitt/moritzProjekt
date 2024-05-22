@@ -2,7 +2,9 @@ import genanki
 import numpy as np
 import os
 import time
+from logging_config import logger, log_io
 
+@log_io
 def generate_anki_deck(df):
     with open('templates/anki_card.html', 'r', encoding='utf-8') as content_file:
         content = content_file.read()   
@@ -68,19 +70,14 @@ def generate_anki_deck(df):
 
 # export the df as an anki package and csv file
 
-import logging
-
-def export_df(df, package, config, output_file_path):
-    # Set up logging
+@log_io
+def export_df(df, package, native_language, output_file_path):
 
     # Save the Anki package to the Desktop
     current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
-    package_path = os.path.join(output_file_path, f'{config["native_language"]}_LLN_{current_time}.apkg')
+    package_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.apkg')
     package.write_to_file(package_path)
 
-    logging.info(f'Anki package "{package_path}" has been created.')
-
-    # df = df[["synonyms", "hint", "first_example", "second_example", "explanation", "cloze", "definition", "image", "audio"]]
 
     # clean the df
     # Replace empty strings with NaN
@@ -90,10 +87,10 @@ def export_df(df, package, config, output_file_path):
     df = df.dropna(how='all', axis=1)
 
     # Save the DataFrame as a CSV file to the Desktop
-    csv_file_path = os.path.join(output_file_path, f'{config["native_language"]}_LLN_{current_time}.csv')
+    csv_file_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.csv')
     df.to_csv(csv_file_path, index=False, sep='\t')
 
-    logging.info(f'CSV file "{csv_file_path}" has been created.')
+    logger.info(f'CSV file "{csv_file_path}" has been created.')
 
     return package_path, csv_file_path
 

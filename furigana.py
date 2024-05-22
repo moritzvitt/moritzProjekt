@@ -4,6 +4,7 @@ from sudachipy import tokenizer
 from sudachipy import dictionary
 from wanakana import is_japanese, is_katakana, to_hiragana, is_hiragana
 import string
+from logging_config import logger, log_io   
 
 tokenizer_obj = dictionary.Dictionary(dict="small").create()
 
@@ -26,6 +27,7 @@ def is_japanese_extended(text):
 
 def to_anki_format(index, kanji, reading):
     return '{}{}[{}]'.format(' ' if index > 0 else '', kanji, reading) 
+
 
 def add_furigana(text):
     tokens = [m for m in tokenizer_obj.tokenize(text, tokenizer.Tokenizer.SplitMode.C)]

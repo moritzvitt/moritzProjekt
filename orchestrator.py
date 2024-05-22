@@ -5,24 +5,24 @@ import pandas as pd
 import os
 
 # Import functions from other scripts 
+from logging_config import logger, log_io
 from configurations import basic_configurations
 from formatting import formatting #definition_field, notes_field
 from furigana import add_furigana
 from deck import generate_anki_deck, export_df
 from gpt import create_ai_prompts, handle_API_errors, get_ai_response
-from logging_config import logger, log_io 
+
 
 
 
 def main(df, config):
     
+    with open('config/column_names.yaml', 'r') as file:
+        data = yaml.safe_load(file)
+        # the column names are stored in a list, the list's name is column_names
+        column_names = data['column_names']
 
-
-    df, merged = basic_configurations(df, config)
-
-    # In orchestrator.py and other files
-
-    # ... rest of your code using logger.info(), logger.error(), etc.
+    df, merged = basic_configurations(df=df, target_language = config['target_language'], native_language = config['native_language'], column_names=column_names)
 
     prompts_df = create_ai_prompts(df, merged, config)
     handle_API_errors(get_ai_response, df, prompts_df)
@@ -30,6 +30,7 @@ def main(df, config):
     formatting(df, config)
     
     df = df.map(lambda x: add_furigana(x) if isinstance(x, str) else x)
+    logger.info(f"Dataframe after furigana: {df.head()}")
 
     package = generate_anki_deck(df)  # Ensure this function accepts the dataframe and processes it accordingly
 
@@ -43,7 +44,6 @@ if __name__ == "__main__":
     #safe variables 'native_language' and 'target_language' 
     with open(config_path, 'r') as file:
         config = yaml.safe_load(file)
-        column_names = config['column_names']
 
     # Load the csv file
     df = pd.read_csv(csv_file_path, delimiter='\t')
@@ -51,5 +51,5 @@ if __name__ == "__main__":
     package, df = main(df, config)
 
     output_file_path = os.path.join(os.path.expanduser("~"), "src", "LR2Anki", "downloads")
-    export_df(df, package, config, output_file_path)
+    export_df(df=df, package=package, native_language = config['native_language'], output_file_path=output_file_path)
 # %%

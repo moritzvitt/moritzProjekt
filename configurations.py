@@ -2,25 +2,24 @@ import yaml
 from logging_config import logger, log_io
 
 @log_io
-def basic_configurations(df, config):
+def basic_configurations(df, target_language, native_language, column_names):
+    """
+    This function performs basic configurations on the input DataFrame.
 
-    # need to load column_names from the config file
-    target_language = config['target_language'] 
-    native_language = config['native_language']
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame to be configured.
+    config (dict): The configuration settings.
 
-    with open('config/column_names.yaml', 'r') as file:
-        data = yaml.safe_load(file)
-        # the column names are stored in a list, the list's name is column_names
-        column_names = data['column_names']
+    Returns:
+    tuple: A tuple containing the configured DataFrame and a merged object.
+    """
     
     # assign column_names to the dataframe
     df.columns = column_names
 
     # add columns to the dataframe
-    df['native_language'] = config['native_language']
-    df['target_language'] = config['target_language']
-
-    print(f"\nnative_language: {native_language}\ntarget_language: {target_language}\ncolumn_names: {column_names}\n")
+    df['native_language'] = native_language
+    df['target_language'] = target_language
 
     # Load both YAML files
     with open('config/messages.yaml', 'r') as file:
