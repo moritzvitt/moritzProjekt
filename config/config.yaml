@@ -5,15 +5,15 @@ native_language: English
 
 # Which fields do you want to generate?
 wanted_fields:
-  synonyms: true
+  synonyms: false
   test: true
-  explanation: true
-  first_example: true
-  second_example: true
-  hint: true
-  definition: true
-  grammar: true
-  conjugation: true
+  explanation: false
+  first_example: false
+  second_example: false
+  hint: false
+  definition: false
+  grammar: false
+  conjugation: false
   long_test_message: false
   
 column_names:

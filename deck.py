@@ -66,20 +66,23 @@ def generate_anki_deck(df):
 
 # export the df as an anki package and csv file
 
-def export_df (df, package, config, output_file_path):
+import logging
+
+def export_df(df, package, config, output_file_path):
+    # Set up logging
 
     # Save the Anki package to the Desktop
     current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
     package_path = os.path.join(output_file_path, f'{config["native_language"]}_LLN_{current_time}.apkg')
     package.write_to_file(package_path)
 
-    print(f'Anki package "{package_path}" has been created.')
+    logging.info(f'Anki package "{package_path}" has been created.')
 
     # df = df[["synonyms", "hint", "first_example", "second_example", "explanation", "cloze", "definition", "image", "audio"]]
-    
+
     # clean the df
     # Replace empty strings with NaN
-    df = df.replace('', np.nan)
+    df = df.replace('', np.nan).infer_objects(copy=False)
     # Drop columns that only contain NaN
     df = df.dropna(how='all', axis=1)
 
@@ -87,7 +90,7 @@ def export_df (df, package, config, output_file_path):
     csv_file_path = os.path.join(output_file_path, f'{config["native_language"]}_LLN_{current_time}.csv')
     df.to_csv(csv_file_path, index=False, sep='\t')
 
-    print(f'CSV file "{csv_file_path}" has been created.')
+    logging.info(f'CSV file "{csv_file_path}" has been created.')
 
     return package_path, csv_file_path
 
