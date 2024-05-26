@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>formatting &mdash; LanguageReactor2Anki none documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a9233558"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            LanguageReactor2Anki
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">LanguageReactor2Anki Modules</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LanguageReactor2Anki</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Module code</a></li>
+      <li class="breadcrumb-item active">formatting</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for formatting</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">logging_config</span> <span class="kn">import</span> <span class="n">logger</span><span class="p">,</span> <span class="n">log_io</span>
+
+<div class="viewcode-block" id="formatting">
+<a class="viewcode-back" href="../modules.html#formatting.formatting">[docs]</a>
+<span class="nd">@log_io</span>
+<span class="k">def</span> <span class="nf">formatting</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+
+    <span class="c1"># NOTE can potentially remove add_fields function, </span>
+    <span class="c1"># as the fields are passed individually to the html template </span>
+    <span class="c1"># instead of using definition_field</span>
+
+    <span class="k">def</span> <span class="nf">add_fields</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">wanted_fields</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">should_add</span> <span class="ow">in</span> <span class="n">wanted_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">should_add</span><span class="p">:</span>
+                <span class="n">field_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">df</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">add_fields</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;wanted_fields&quot;</span><span class="p">])</span>
+
+    
+    <span class="k">def</span> <span class="nf">clean_long_sentence</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;(&quot;</span> <span class="ow">in</span> <span class="n">sentence</span> <span class="ow">and</span> <span class="s2">&quot;)&quot;</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+            <span class="n">cleaned_sentence</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\(.*?\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cleaned_sentence</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">sentence</span>
+        
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;long_phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;long_phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_long_sentence</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">create_ID</span><span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">date</span><span class="p">):</span>
+        <span class="n">newID</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ID</span><span class="si">}{</span><span class="n">source</span><span class="si">}{</span><span class="n">date</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">newID</span> <span class="o">=</span> <span class="n">newID</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;__&quot;</span><span class="p">)</span>
+        <span class="c1">#random number</span>
+        <span class="n">newID</span> <span class="o">=</span> <span class="n">newID</span> <span class="o">+</span> <span class="s2">&quot;__&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">9999</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">newID</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">create_ID</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;ID&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">anki_sound_pattern</span><span class="p">(</span><span class="n">mp3</span><span class="p">):</span>
+            <span class="n">mp3</span> <span class="o">=</span> <span class="s2">&quot;[sound:&quot;</span> <span class="o">+</span> <span class="n">mp3</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
+            <span class="k">return</span> <span class="n">mp3</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;audio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">anki_sound_pattern</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;audio&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">anki_image_pattern</span><span class="p">(</span><span class="n">first_jpg</span><span class="p">,</span> <span class="n">second_jpg</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;img src=&quot;</span><span class="si">{</span><span class="n">first_jpg</span><span class="si">}</span><span class="s1">&quot;&gt;&lt;img src=&quot;</span><span class="si">{</span><span class="n">second_jpg</span><span class="si">}</span><span class="s1">&quot;&gt;&#39;</span>
+        <span class="k">return</span> <span class="n">image</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;image&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">anki_image_pattern</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;first_jpg&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;second_jpg&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">cloze_pattern</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">synonyms</span><span class="p">):</span>
+        <span class="n">word_new</span> <span class="o">=</span> <span class="s1">&#39;{&#39;</span> <span class="o">+</span> <span class="s1">&#39;{&#39;</span> <span class="sa">f</span><span class="s1">&#39;c1::</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1">::</span><span class="si">{</span><span class="n">synonyms</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;}&#39;</span> <span class="o">+</span> <span class="s1">&#39;}&#39;</span>
+        <span class="c1"># print(word_new)</span>
+
+        <span class="n">phrase</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">word</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">word_new</span><span class="p">,</span> <span class="n">phrase</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+        <span class="c1"># print(phrase)</span>
+        <span class="k">return</span> <span class="n">phrase</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cloze&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">cloze_pattern</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;word&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;long_phrase&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;synonyms&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">clean_hint</span><span class="p">(</span><span class="n">hint</span><span class="p">):</span>
+        <span class="c1"># print(type(hint))</span>
+        <span class="k">if</span> <span class="n">hint</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="s2">&quot;:&quot;</span> <span class="ow">in</span> <span class="n">hint</span><span class="p">:</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[:](.+)?&quot;</span><span class="p">,</span> <span class="n">hint</span><span class="p">)</span> 
+            <span class="c1"># r&quot;[:](.+)?&quot; worked</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;: </span><span class="si">{</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span> 
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;hint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;hint&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_hint</span><span class="p">)</span>
+
+    <span class="c1"># TODO remove the following function, pass the fields individually to the html template  </span>
+
+    <span class="k">def</span> <span class="nf">definition_field</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">field</span> <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="k">if</span> <span class="n">field</span><span class="p">]</span>
+        <span class="n">newDefinition</span> <span class="o">=</span> <span class="s2">&quot;&lt;br&gt;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">fields</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">newDefinition</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;definition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">definition_field</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;definition&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;explanation&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;grammar&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;conjugation&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;first_example&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;second_example&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+    <span class="c1"># TODO remove the following function, the notes field will be removed and </span>
+    <span class="c1"># translation, word_translation will be added individually</span>
+    <span class="k">def</span> <span class="nf">notes_field</span><span class="p">(</span><span class="n">translation</span><span class="p">,</span> <span class="n">word_translation</span><span class="p">):</span>
+        <span class="n">translation_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">translation</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">word_translation_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">word_translation</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">word_translation</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">newNotes</span> <span class="o">=</span> <span class="n">translation_str</span> <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&lt;br&gt;&quot;</span> <span class="o">+</span> <span class="n">word_translation_str</span> <span class="o">+</span> <span class="s2">&quot;&lt;br&gt;&quot;</span>
+        <span class="k">return</span> <span class="n">newNotes</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;notes&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">notes_field</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;human_translation&quot;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;word_translation&quot;</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Moritz Vitt.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -25,5 +25,49 @@ graph LR;
     I --> J{Export data CSV & Anki package};
 ```
 
+```mermaid
+flowchart TD
+    A[Start] --> B[Load Configuration Files]
+    B --> C[Load DataFrame]
+    C --> D[Main Function]
 
+    subgraph Main Function
+        D --> E[Load column_names.yaml]:::file
+        D --> F[Load messages.yaml]:::file
+        D --> G[Load examples.yaml]:::file
+        D --> H[Basic Configurations]
+        H --> I[Create AI Prompts]
+        I --> J[Handle API Errors]
+        J --> K[Format DataFrame]
+        K --> L[Add Furigana]
+        L --> M[Generate Anki Deck]:::file
+        M --> N[Return package and DataFrame]
+    end
 
+    N --> O[Export DataFrame]
+
+    subgraph Export DataFrame
+        O --> P[Export Anki Package]
+        O --> Q[Clean DataFrame]
+        Q --> R[Export CSV]
+    end
+
+    P --> S[Output: Anki Package]
+    R --> T[Output: CSV File]
+
+    A --> U[Input: config.yaml]:::file
+    A --> V[Input: test_dataframes/jn_items.csv]:::file
+
+    C --> U
+    C --> V
+
+    
+    click U "config/config.yaml"
+    click V "test_dataframes/jn_items.csv"
+    click E "config/column_names.yaml"
+    click F "config/messages.yaml"
+    click G "config/examples.yaml"
+    click M "deck.py"
+    click O "deck.py"
+
+```
