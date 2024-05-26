@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session,  
 import os
 import pandas as pd
 import yaml
-from orchestrator import main
+from src.orchestrator import main
 from deck import export_df
 
 app = Flask(__name__)
@@ -38,6 +38,9 @@ def upload_file():
         # the column names are stored in a list, the list's name is column_names
         column_names = data['column_names']
     
+
+    # TODO target_langugage default value should come from df, show it to user directly when csv is uploaded
+
     # assign column_names to the dataframe
     df.columns = column_names
     # only select necessary columns like word

@@ -3,8 +3,10 @@ import numpy as np
 import pandas as pd
 import os
 import time
-from logging_config import logger, log_io
+from src.logging_config import logger, log_io
 from typing import Tuple
+
+from ..config.config import fields_config
 
 @log_io
 def generate_anki_deck(df: pd.DataFrame) -> genanki.Package:
@@ -16,6 +18,7 @@ def generate_anki_deck(df: pd.DataFrame) -> genanki.Package:
     Returns:
         genanki.Package: The generated Anki package.
     """
+    
     with open('templates/anki_card.html', 'r', encoding='utf-8') as content_file:
         content = content_file.read()
 
@@ -37,15 +40,7 @@ def generate_anki_deck(df: pd.DataFrame) -> genanki.Package:
     model = genanki.Model(
         model_id,
         'Language Learning with Netflix Model',
-        fields=[
-            {'name': 'ID'},
-            {'name': 'cloze'},
-            {'name': 'hint'},
-            {'name': 'definition'},
-            {'name': 'notes'},
-            {'name': 'image'},
-            {'name': 'audio'},
-        ],
+        fields = fields_config["fields"],
         templates=[
             {
                 'name': 'Card 1',
@@ -88,9 +83,6 @@ def export_df(df: pd.DataFrame, package: genanki.Package, native_language: str, 
     current_time = time.strftime("%Y%m%d%H%M%S", time.localtime())
     package_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.apkg')
     package.write_to_file(package_path)
-
-    df.replace('', np.nan, inplace=True)  # Replace empty strings with NaN (inplace modification)
-    df.dropna(how='all', axis=1, inplace=True)  # Drop columns with only NaN values
 
     csv_file_path = os.path.join(output_file_path, f'{native_language}_LLN_{current_time}.csv')
     df.to_csv(csv_file_path, index=False, sep='\t', encoding=encoding)
