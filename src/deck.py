@@ -6,10 +6,13 @@ import time
 from src.logging_config import logger, log_io
 from typing import Tuple
 
-from ..config.config import fields_config
+from config import fields_config
+
+with open('templates/anki_card.html', 'r', encoding='utf-8') as content_file:
+        content = content_file.read()
 
 @log_io
-def generate_anki_deck(df: pd.DataFrame) -> genanki.Package:
+def generate_anki_deck(df: pd.DataFrame, card_layout) -> genanki.Package:
     """Generates an Anki deck from a DataFrame.
 
     Args:

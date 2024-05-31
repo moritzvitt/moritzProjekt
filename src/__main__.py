@@ -43,7 +43,7 @@ def main(df: pd.DataFrame, config: dict) -> tuple:
     return package, df
     
 if __name__ == "__main__":
-    from ..config.config import config
+    from config import config
 
     csv_file_path = Path("test_dataframes/jn_items.csv")
     df = pd.read_csv(csv_file_path, delimiter='\t')

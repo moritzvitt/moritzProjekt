@@ -5,7 +5,7 @@ from typing import List, Dict, Tuple
 
 # dependencies from other scripts
 from logging_config import log_io
-from ..config.config import column_names, client
+from config import column_names, client
 
 @log_io
 def prepare_data(
@@ -57,6 +57,7 @@ def prepare_data(
 # TODO split the dataframe every 10 rows. insert it as string in the template
 # TODO create different messages for phrase...
 
+#Still needed to insert {{native_language}} and {{target_language}} in the template
 @log_io
 def create_ai_prompts(df: pd.DataFrame, merged: Dict[str, str], config: Dict[str, Union[str, bool]]) -> pd.DataFrame:
 

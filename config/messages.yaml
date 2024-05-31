@@ -1,5 +1,7 @@
 # This file contains the messages that are sent to the user during the different stages of the conversation.
 
+anki_image_pattern: <img src="{{first_jpg}}"><img src="{{second_jpg}}">
+anki_sound_pattern:  '[sound:{{audio}}]'
 test: 
   "Say 'test'"
 long_test_message:
@@ -18,9 +20,27 @@ general:
   "I will provide you with a dataframe, containing pairs of sentences and words, where the word always appears in the sentence. 
   Provide me with a table, that contains following information for each pair:
   \n
-  - Synonyms for '{{word}}' in {{target_language}}.
-  - A brief explanation of '{{stem}}' in {{native_language}} (4 words).
-  - A hint for '{{word}}' in {{native_language}}, short (4 words), paraphrasing the word? 
+  - Synonyms for the word in {{target_language}}.
+  - A brief explanation of word in {{native_language}} (4 words).
+  - A hint for word in {{native_language}}, short (4 words), paraphrasing the word? 
+  I want to be able to guess the word by reading the hint, but the hint should never include the word.
+  - An example sentence in {{target_language}}.
+  \n
+  The names of the columns from the table should be word, sentences 
+  (just keep the original values from the dataframe I provided you with)
+  synonyms, explanation, hint, example, example_translation.
+  \nHere is the dataframe: 
+  \n{{dataframe}}"
+
+# TODO message needs to be customizable...
+general_: 
+  "I will provide you with a dataframe, containing pairs of sentences and words, where the word always appears in the sentence. 
+  Provide me with a table, that contains following information for each pair:
+  \n
+  {{synonyms}}
+  - Synonyms for the word in {{target_language}}.
+  - A brief explanation of word in {{native_language}} (4 words).
+  - A hint for word in {{native_language}}, short (4 words), paraphrasing the word? 
   I want to be able to guess the word by reading the hint, but the hint should never include the word.
   - An example sentence in {{target_language}}.
   \n
