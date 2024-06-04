@@ -1,20 +1,72 @@
 import pandas as pd
-from jinja2 import Template
-from openai import OpenAI
 import openai
-import os
-from src.logging_config import logger, log_io
+from jinja2 import Template
 from typing import Dict, Union
-from ..config.config import client
+
+from config import client, logger, log_io
+
+
+# TODO need to adjust the df a little bit for GPT.
+# TODO split the dataframe every 10 rows. insert it as string in the template
+# TODO create different messages for phrase...
+
+#Still needed to insert {{native_language}} and {{target_language}} in the template
+@log_io
+def create_ai_prompts(df: pd.DataFrame, merged: Dict[str, str], config: Dict[str, Union[str, bool]]) -> pd.DataFrame:
+
+    prompts_df = pd.DataFrame()
+
+    def replace_placeholders(config, messages):
+    for key, message in merged.items():
+        merged[key] = merged.format(**config)
+        return merged
+
+    # drop all unwanted fields ...
+
+    def filter_fields(df: pd.DataFrame, wanted_fields: Dict[str, bool]) -> pd.DataFrame:
+        for field, value in wanted_fields.items():
+            if not value:
+                df.drop(field, axis=1, inplace=True)
+        return df
+
+    # Apply filter and return the DataFrame
+    prompts_df = filter_fields(prompts_df, config["wanted_fields"])
+    return prompts_df
 
 
 
 # try 3 times. If it doesn't work, just go one with the next one.
 
+# Example of an OpenAI ChatCompletion request with stream=True and stream_options={"include_usage": True}
+
+# a ChatCompletion request
+response = client.chat.completions.create(
+    model='gpt-3.5-turbo',
+    messages=[
+        {'role': 'user', 'content': "What's 1+1? Answer in one word."}
+    ],
+    temperature=0,
+    stream=True,
+    stream_options={"include_usage": True}, # retrieving token usage for stream response
+)
+
+for chunk in response:
+    print(f"choices: {chunk.choices}\nusage: {chunk.usage}")
+    print("****************")
+
+
+# with streaming:     
 
 def get_ai_response(message):
+    
+    # TODO create a Thread, first message: send the df and then next messages work on the df.
+    # processes these several responses. 
+    # maybe try sending several messages at the same time. To speed up the generation process. 
+    # Especially when people want grammar explanations. 
+
     try:
         response = client.chat.completions.create(
+            model="gpt-4o",
             messages=[{"role": "user", "content": message}],
         )
         

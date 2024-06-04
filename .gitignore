@@ -5,4 +5,5 @@ test_dataframes/
 uploads/
 downloads/
 __pycache__/
+logs
 other

@@ -1,5 +1,8 @@
 # This file contains the messages that are sent to the user during the different stages of the conversation.
 
+
+
+# Think in threads! Each message can be split in different messages that will be appended to the threat depending on an if statement.
 anki_image_pattern: <img src="{{first_jpg}}"><img src="{{second_jpg}}">
 anki_sound_pattern:  '[sound:{{audio}}]'
 test: 

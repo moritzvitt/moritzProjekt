@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Translation Tooltip</title>
+    <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -80px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <br>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br><br><br><br><br><br><br><br>
+        <span class="tooltip">ハク龍[りゅう]
+            <span class="tooltiptext">Haku, Dragon</span>
+        </span>
+        <span class="tooltip">あなたの
+            <span class="tooltiptext">your</span>
+        </span>
+        <span class="tooltip">した事は
+            <span class="tooltiptext">deed</span>
+        </span>
+        <span class="tooltip">もう
+            <span class="tooltiptext">no longer</span>
+        </span>
+        <span class="tooltip">とがめません
+            <span class="tooltiptext">blame</span>
+        </span>
+        <span class="tooltip">その代わり
+            <span class="tooltiptext">instead</span>
+        </span>
+        <span class="tooltip">その子を
+            <span class="tooltiptext">that child</span>
+        </span>
+        <span class="tooltip">しっかり
+            <span class="tooltiptext">well</span>
+        </span>
+        <span class="tooltip">守るんだよ
+            <span class="tooltiptext">protect</span>
+        </span>
+        <span class="tooltip">さあ
+            <span class="tooltiptext">come on</span>
+        </span>
+        <span class="tooltip">坊[ぼう]やたち
+            <span class="tooltiptext">boys</span>
+        </span>
+        <span class="tooltip">お帰りの時間だよ
+            <span class="tooltiptext">it's time to go home</span>
+        </span>
+    </p>
+    <p>
+        <span class="tooltip">聞[き]いてなかったんですか?
+            <span class="tooltiptext">Weren't you listening?</span>
+        </span>
+        <span class="tooltip">教頭[きょうとう]
+            <span class="tooltiptext">Vice Principal</span>
+        </span>
+        <span class="tooltip">先生[せんせい]のお話[はなし]を。
+            <span class="tooltiptext">the teacher's talk.</span>
+        </span>
+        <span class="tooltip">専攻[せんこう]の
+            <span class="tooltiptext">Major in (専攻[せんこう] = major, の = possessive particle)</span>
+        </span>
+        <span class="tooltip">説教[せっきょう]なんて、
+            <span class="tooltiptext">Nantic sermon, lecture (説教[せっきょう] = sermon, lecture, なんて = nantic particle for disdain or contempt)</span>
+        </span>
+        <span class="tooltip">どうせ
+            <span class="tooltiptext">anyway, after all, invariably</span>
+        </span>
+        <span class="tooltip">似[に]たようなもんでしょう。
+            <span class="tooltiptext">It's the same thing isn't it (似[に]た = similar, ような = like, もん = informal version of 物[もの], でしょう = conjecture, expectation)</span>
+        </span>
+        <span class="tooltip">それより俺[おれ]は、
+            <span class="tooltiptext">More than that, I</span>
+        </span>
+        <span class="tooltip">高校[こうこう]教師[きょうし]になれなかったことの方[ほう]がショックっすよ。
+            <span class="tooltiptext">am more shocked by the fact that I couldn't become a high school teacher.</span>
+        </span>
+    </p>
+    <p>
+        <span class="tooltip">似[に]る
+            <span class="tooltiptext">To resemble, be similar to, look like</span>
+        </span>: 
+        <span class="tooltip">似[に]
+            <span class="tooltiptext">A Japanese verb meaning 'to resemble' or 'to look like'</span>
+        </span>
+    </p>
+    <p>
+        あなたは彼[かれ]にとても
+        <span class="tooltip">似[に]ています。
+            <span class="tooltiptext">You look very much like him.</span>
+        </span>
+    </p>
+    <p>
+        その絵[え]は彼[かれ]の作品[さくひん]に
+        <span class="tooltip">よく似[に]ている。
+            <span class="tooltiptext">That painting closely resembles his work.</span>
+        </span>
+    </p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Table Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.12/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            /* margin: 40px; */
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div id="markdown-content"></div>
+
+    <script>
+        const markdownTable = `
+| Pros                               | Cons                                         |
+|------------------------------------|----------------------------------------------|
+| Quick Energy Boost             | High in sugar, leading to weight gain        |
+| Readily Available              | Contains caffeine, which can cause dependency|
+| Affordable                     | Contributes to dental problems like cavities |
+| Refreshing Flavor              | Potential for increased risk of diabetes     |
+| Wide variety of flavors        | May cause digestive issues and bloating      |
+| Sociability and cultural aspect| Possible link to increased risk of osteoporosis|
+|                                    | High calorie content without nutritional value|
+|                                    | Can cause spikes and crashes in blood sugar levels|
+`;
+
+        document.getElementById('markdown-content').innerHTML = marked.parse(markdownTable);
+    </script>
+</body>
+</html>

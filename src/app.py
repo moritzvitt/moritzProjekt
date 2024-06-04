@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session,  
 import os
 import pandas as pd
 import yaml
-from __main__ import main
+from __main__ import handle_language_reactor_df
 from deck import export_df
 
 app = Flask(__name__)
