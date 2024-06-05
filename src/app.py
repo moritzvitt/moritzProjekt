@@ -20,36 +20,3 @@ def upload_file():
 if __name__ == '__main__':
     print("Current working directory:", os.getcwd())
     app.run(debug=True)
-# 
-from flask import Flask, render_template
-from flaskext.markdown import Markdown
-import os
-
-app = Flask(__name__, template_folder='../templates', static_folder='../static')
-Markdown(app)
-
-@app.route('/')
-def index():
-    # Example Markdown content
-    markdown_content = """
-    # Welcome to My Flask App
-    This is a simple example of combining **Markdown** with *Bootstrap*.
-    
-    ## Features
-    - Easy to use
-    - Simple integration
-    - Powerful and flexible
-
-    ```python
-    # Sample code block
-    def hello_world():
-        print("Hello, world!")
-    ```
-
-    ![Example Image](static/images/francy.webp)
-    """
-    return render_template('index.html', title='Markdown with Bootstrap', content=markdown_content)
-
-if __name__ == '__main__':
-    print("Current working directory:", os.getcwd())
-    app.run(debug=True)
