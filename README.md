@@ -21,4 +21,6 @@ A library of prompts, that allows to easily process the export items.csv from th
    2. Check the header (the column names) of the table. They need to be exactly like the column names specified above.
 
 4. asks chatGPT to provide the table as .csv
-5. Check if 
+
+
+
