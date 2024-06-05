@@ -6,21 +6,6 @@ import logging
 import time
 from functools import wraps
 
-
-# TODO take always take native language, except if they is another language specified
-config = {
-    "target_language": "Japanese",
-    "native_language": "English",
-    "wanted_fields": {
-        "test": [True, "Russian"],
-        "general": False,
-        "grammar": False,
-        "conjugation": False,
-        "word_type": False,
-    },
-    "model": "gpt-4o",
-}
-
 column_names = [
     "Item key",
     "Item type ('WORD' or 'PHRASE')", 
