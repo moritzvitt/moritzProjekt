@@ -50,12 +50,6 @@ The 'Context' column contains a sentence in the target language, that the studen
    - 私[わたし]は 大学生[だいがくせい]です。
    - Attention: this would be wrong, as '事', '時間', '代' and '守' lack a blank space before. ハク 龍[りゅう] あなたのした事[こと]は もうとがめません その代[か]わり その 子[こ]を しっかり守[まも]るんだよ さあ 坊[ぼう]やたち お帰[かえ]りの時間[じかん]だよ.
    - Same thing here, spaces missing before '代わり' and '行って': 私[わたし]の代[か]わりに行[い]ってください。
-4. ### Output
-
-
-   - Output the generated information as a Markdown table, including the column names as headers.
-   - Do not include warnings or notes in the output—only the requested sections.
-   - Do not include additional information like 'here is the markdown table' or anything else. The only thing I want to have is the markdown table.
 
 # EXAMPLES
 
