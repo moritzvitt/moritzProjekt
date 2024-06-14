@@ -19,7 +19,7 @@ You will be given a csv containing sentence-word pairs from the Google extension
 
 The 'Context' column contains a sentence in Spanish, the target language. The 'Word' column contains one word that appears in the 'Context' sentence.
 
-! The delimiter in the csv is probably tab!
+! The delimiter of the csv is probably tab!
 
 # Steps
 
@@ -27,7 +27,7 @@ The 'Context' column contains a sentence in Spanish, the target language. The 'W
 
 Have a look at the table I provided you with. Don't use code for that, just rely on your prediction of characters as LLM.
 
-- Remove unnecessary characters and correct weird formatting from 'Word' and 'Context'. However, pay attention that 'Word' always appears in 'Context'.
+- use python to remove unnecessary characters and correct weird formatting from 'Word' and 'Context'. However, pay attention that 'Word' always appears in 'Context'.
 - Check each row to ensure the 'Context' sentence is correctly parsed. The 'Word' should include the entire vocabulary word, not just a fragment. Sometimes parsers may miss the whole verb or expression. Also, check the 'Context machine translation' to see if the 'Word' makes sense in its 'Context'. If there is a parsing error and 'Word' is incomplete, adjust 'Word' to match the vocabulary in 'Context'. Ensure 'Word' is formatted exactly as it appears in 'Context' (including capitalization, grammar, punctuation, and spelling errors if present).
 
 2. ### Generate flashcard information
