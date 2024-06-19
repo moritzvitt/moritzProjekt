@@ -8,6 +8,7 @@ A library of prompts, that allows to easily process the export items.csv from th
       - Japanese also contains a prompt to add furigana to each word. 
 
 2. From your 'items.csv' select the columns 'Word', 'Context' and 'Context machine translation' and send them together with the prompt to chatGPT.
+   
 3. You will obtain a table, that should contain 7 columns with following column names:
    - 'Word'
    - 'Context'

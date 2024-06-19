@@ -27,13 +27,12 @@ The 'Context' column contains a sentence in Spanish, the target language. The 'W
 
 Have a look at the table I provided you with. Don't use code for that, just rely on your prediction of characters as LLM.
 
-- use python to remove unnecessary characters and correct weird formatting from 'Word' and 'Context'. However, pay attention that 'Word' always appears in 'Context'.
+- remove unnecessary characters and correct weird formatting from 'Word' and 'Context'. However, pay attention that 'Word' always appears in 'Context'.
 - Check each row to ensure the 'Context' sentence is correctly parsed. The 'Word' should include the entire vocabulary word, not just a fragment. Sometimes parsers may miss the whole verb or expression. Also, check the 'Context machine translation' to see if the 'Word' makes sense in its 'Context'. If there is a parsing error and 'Word' is incomplete, adjust 'Word' to match the vocabulary in 'Context'. Ensure 'Word' is formatted exactly as it appears in 'Context' (including capitalization, grammar, punctuation, and spelling errors if present).
 
-2. ### Generate flashcard information
+1. ### Generate flashcard information
 
    To assist the student, generate a table containing following information for each row:
-
 
    1. Two or more synonyms for 'Word' based on its 'Context'.
    2. Two or more translations for 'Word' based on its 'Context'.
