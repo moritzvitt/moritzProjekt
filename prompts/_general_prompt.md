@@ -13,11 +13,15 @@ You will be given a csv containing sentence-word pairs from the Google extension
 
 The 'Context' column contains a sentence in Spanish, the target language. The 'Word' column contains one word that appears in the 'Context' sentence.
 
-! The delimiter of the csv is probably tab!
-
 # Steps
 
-1. Read the dataframe
+Follow these steps one by one and say what you will do next, when you from one step to the next one!
+
+1. ### Read the dataframe
+- read the dataframe. It can come in any format, but it will most likely come as a tab delimited .csv file! 
+- if there are no column names indicated, guess them from the context! 
+- However, if it comes as markdown, just continue with step 2!
+
 2. ### Clean the data and check for parsing errors
 
 Have a look at the table I provided you with. Don't use code for that, just rely on your prediction of characters as LLM.
@@ -58,12 +62,12 @@ Please use python for the following. Use regular expressions, to apply a special
 
 1. Apply cloze deletion format to the 'Context field. 'You need to find where 'Word' in the 'Context' and apply following formatting, so that Anki recognises it as a cloze delition: {{c1::Word::translation}}
 2. Apply Anki's audio and image patterns to 'Image' and 'Audio fields':
-   1. The image pattern is <img:{Image} >
+   1. The image pattern is <img:{Image}>
    2. the audio pattern si [sound:{Audio}]
 
 # Output
 
-Output the generated information as a csv table, including the column names as headers.
+Give me the generated information as a csv table, including the column names as headers.
 
 - Do not include warnings or notes in the output—only the requested sections.
 - Do not include additional information like 'here is the csv table' or anything else. The only thing I want is the raw csv table.
