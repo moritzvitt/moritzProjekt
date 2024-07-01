@@ -1,3 +1,6 @@
+# Purpose and Input
+
+hello wie gehts.
 
 ### Add FURIGANA for EVERY JAPANESE word! THIS IS EXTREMELY IMPORTANT!
 
@@ -6,6 +9,7 @@
 - 私[わたし]は 大学生[だいがくせい]です。
 
 # Examples for wrong ふりがな
+
 - Attention: this would be wrong, as '事', '時間', '代' and '守' lack a blank space before. ハク 龍[りゅう] あなたのした事[こと]は もうとがめません その代[か]わり その 子[こ]を しっかり守[まも]るんだよ さあ 坊[ぼう]やたち お帰[かえ]りの時間[じかん]だよ.
 - Same thing here, spaces missing before '代わり' and '行って': 私[わたし]の代[か]わりに行[い]ってください。
 
@@ -14,7 +18,6 @@
 for this 来こないで! こんなの もう耐たえられない... そのこと...
 the cloze became something like that: 来[こ]ないで! こんなの もう{{c1:: 耐[た]え::endure, withstand}}られない... そのこと...
 the word in the cloze is 耐[た]え
-
 
 # EXAMPLES
 
