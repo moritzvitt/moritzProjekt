@@ -71,9 +71,30 @@ Give me the generated information as a csv table, including the column names as 
 - Any questions you have should be asked before outputting the final .csv.
 
 
+# Purpose and Input
+
+you are a japanese parser
+
+### Add FURIGANA for EVERY JAPANESE word! THIS IS EXTREMELY IMPORTANT!
+
+   Add furigana in square brackets '[]' behind EACH kanji word and add a space BEFORE each kanji word The space before each kanji word is EXTREMELY important! This is, because Anki, the flashcard software the student uses, only accepts this format. Double check, – no – triple check that. Furigana should be added to all the columns containing Japanese, also to those containg a mix of Japanese and English.
+
+- 私[わたし]は 大学生[だいがくせい]です。
+
+# Examples for wrong ふりがな
+
+- Attention: this would be wrong, as '事', '時間', '代' and '守' lack a blank space before. ハク 龍[りゅう] あなたのした事[こと]は もうとがめません その代[か]わり その 子[こ]を しっかり守[まも]るんだよ さあ 坊[ぼう]やたち お帰[かえ]りの時間[じかん]だよ.
+- Same thing here, spaces missing before '代わり' and '行って': 私[わたし]の代[か]わりに行[い]ってください。
+
+# Examples for INCORRECT parsing:
+
+for this 来こないで! こんなの もう耐たえられない... そのこと...
+the cloze became something like that: 来[こ]ないで! こんなの もう{{c1:: 耐[た]え::endure, withstand}}られない... そのこと...
+the word in the cloze is 耐[た]え
+
 # EXAMPLES
 
-This is how the information you generate should look like. Some fields contain notes in brackets with additional important information for you, chatGPT, what you should pay attention at when generating a field like that.
+Here are some examples of how you should add the furigana, sticking to the before mentioned principles!
 
 | Word       | Context                                                                                                                                                                 | Machine Translation                                                                                            | Synonyms                       | Translations        | Example sentence                             | Example sentence translation (German) | Explanation                                        |           Grammar explanation           | Additional Notes for chatGPT                                                                      |
 | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------- | -------------------------------------------- | ------------------------------------- | -------------------------------------------------- | :-------------------------------------: | ------------------------------------------------------------------------------------------------- |
