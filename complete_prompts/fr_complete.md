@@ -75,10 +75,32 @@ Give me the generated information as a csv table, including the column names as 
 
 This is how the information you generate should look like:
 
-| Word    | Context                      | Machine Translation      | Synonyms          | Translations | Example sentence                    | Example sentence translation (English) | Explanation                | Grammar explanation        | Additional Notes       |
-| ------- | ---------------------------- | ------------------------ | ----------------- | ------------ | ----------------------------------- | -------------------------------------- | -------------------------- | -------------------------- | ---------------------- |
-| perro   | "El perro corre rápido."    | "The dog runs fast."     | can, canino       | dog          | El perro es muy amigable.           | The dog is very friendly.              | A domesticated animal.     | Noun, masculine, singular. | N/A                    |
-| comida  | "La comida está deliciosa." | "The food is delicious." | alimento, vianda  | food, meal   | Preparo comida todos los días.     | I prepare food every day.              | What is eaten.             | Noun, feminine, singular.  | N/A                    |
-| leer    | "Me gusta leer libros."      | "I like to read books."  | examinar, revisar | to read      | Ella va a leer una revista.         | She is going to read a magazine.       | To interpret written text. | Verb, infinitive.          | N/A                    |
-| azul    | "El cielo es azul."          | "The sky is blue."       | celeste, añil    | blue         | Me gusta el color azul.             | I like the color blue.                 | A color.                   | Adjective.                 | N/A                    |
-| rápido | "El coche es muy rápido."   | "The car is very fast."  | veloz, ágil      | fast, quick  | Corre rápido para llegar a tiempo. | Run fast to be on time.                | Describes speed.           | Adjective.                 | Can also be an adverb. |
+| Word   | Context                              | Machine Translation               | Synonyms             | Translations | Example sentence              | Example sentence translation (English) | Explanation             | Grammar explanation       | Additional Notes |
+| ------ | ------------------------------------ | --------------------------------- | -------------------- | ------------ | ----------------------------- | -------------------------------------- | ----------------------- | ------------------------- | ---------------- |
+| maison | "Le président vit dans une maison." | "The president lives in a house." | domicile, habitation | house, home  | Nous avons une grande maison. | We have a big house.                   | House, place of living. | Noun, feminine, singular. | N/A              |
+
+
+This is the table with the word sentence pairs:
+
+Word	Context	Context machine translation	Context human translation
+smala	"Givenchy, Dior, Saint Laurent,
+toute la smala, bref.
+Vous voyez le tableau."	"Givenchy, Dior and Saint Laurent.
+The whole smala, anyway.
+You see the painting."	"Givenchy, Dior, Saint Laurent.
+The whole shebang. Anyway, you get the picture.
+The whole shebang. Anyway, you get the picture."
+	"C'est pas pro, les gars !
+Non, vous déconnez à pleins tubes !
+À pleins tubes !"	"That's not pro, guys!
+No, you're full of shit!
+Full throttle!"	"It's not professional!
+No, it's absolute bullshit!
+Absolute bullshit!"
+déconnez	"C'est pas pro, les gars !
+Non, vous déconnez à pleins tubes !
+À pleins tubes !"	"That's not pro, guys!
+No, you're full of shit!
+Full throttle!"	"It's not professional!
+No, it's absolute bullshit!
+Absolute bullshit!"
