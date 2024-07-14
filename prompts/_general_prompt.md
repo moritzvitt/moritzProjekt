@@ -20,7 +20,7 @@ Follow these steps one by one and say what you will do next, when you proceed fr
 
 - read the dataframe. It can come in any format, but it will most likely come as a tab delimited .csv file!
 - even though the .csv should only have the four columns as mentioned, it can come with more or less columns and in all different formats. Be flexible and adapt to what you are given, just try to guess which columns are which from the content in the cells! However, the full .csv from 'Language Reactor' has following columns:
-  - 'Item key', 'Item type' ('WORD or 'PHRASE'), 'Subtitle', 'Translation', 'Word', 'Lemma', 'Part of speech', 'Color', 'Word definition', 'Source', 'Language', 'Translation language', 'Word transliteration', 'Phrase transliteration', 'Subtitle index', 'Video ID', 'Video title', 'Date created', 'Context', 'Context machine translation', 'Context human translation', 'Previous Image media filename', 'Next Image media filename', 'Audio clip media filename'
+- - 'Item key', 'Item type' ('WORD or 'PHRASE'), 'Subtitle', 'Translation', 'Word', 'Lemma', 'Part of speech', 'Color', 'Word definition', 'Source', 'Language', 'Translation language', 'Word transliteration', 'Phrase transliteration', 'Subtitle index', 'Video ID', 'Video title', 'Date created', 'Context', 'Context machine translation', 'Context human translation', 'Previous Image media filename', 'Next Image media filename', 'Audio clip media filename'
 
 ### 2. Clean the data and check for parsing errors
 
@@ -45,7 +45,6 @@ When generating this information, stick to the following principles:
 - Minimum Information Principle: Formulate the material in the simplest possible way without losing essential information. That means you can safely omit conjunctions like 'or', 'and' and you don't need to say: 現実 means 'reality' or 'actuality'. Instead just say: 現実: reality, actuality.
 
   The table should contain 7 columns with following column names:
-
 - 'Word'
 - 'Context'
 - 'Synonyms'
